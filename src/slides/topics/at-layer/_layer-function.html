@@ -1,0 +1,34 @@
+<section>
+  <h3>That's awesome, but ...</h3>
+</section>
+
+<section>
+  <h3>
+    ... what about <mark>old CSS</mark> codebase <br />
+    and <mark>un-layered third-party</mark> deps?
+  </h3>
+</section>
+
+<section>
+  <h3>
+    The <mark>layer()</mark> function will be<br />
+    your best friend
+  </h3>
+</section>
+
+<section>
+  <h4>@import ... layer() pattern</h4>
+  <pre>
+    <code class="hljs scss" data-trim data-line-numbers="|1|2|3|5-7|9">
+@import 'path-to-old-dependency.css' layer(old);
+@import 'path-to-old-dependency.theme.css' layer(old.theme);
+@import 'path-to-other-old-dependency.css' layer(old.other);
+      
+@layer new-library {
+  ...
+}
+
+// un-layered code
+    </code>
+  </pre>
+</section>

@@ -1,0 +1,26 @@
+@layer cascade {
+  [cascade] {
+    ol {
+      counter-reset: item;
+      list-style-type: none;
+
+      font-size: 1em;
+      line-height: 1.2;
+
+      ol {
+        font-size: 0.8em;
+      }
+
+      li {
+        &::before {
+          content: counters(item, '.') '. ';
+          counter-increment: item;
+        }
+
+        + li {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

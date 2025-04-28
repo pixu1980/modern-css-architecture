@@ -1,0 +1,2278 @@
+<!DOCTYPE html><html lang="it"><head>
+    <meta charset="utf-8">
+    <title>Modern CSS Architecture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="modern-css-architecture.e906959c.css">
+  </head>
+  <body>
+    <main class="reveal">
+      <div class="slides">
+        <section intro="" doodle="">
+  <section data-transition="convex">
+    <h2><mark>Modern</mark> <span class="fragment">(and hopefully Accessible)</span> CSS Architecture<br></h2>
+    <h3 class="fragment fade-right">...with <mark>CSS Atomic APIs</mark></h3>
+  </section>
+</section>
+
+<section>
+  <section pixu="" data-transition="convex">
+    <comparison>
+      <left>
+        <figure>
+          <picture>
+            <source srcset="pixu.ea6d4c65.webp" type="image/webp">
+            <img src="pixu.06482de6.jpg" alt="Pixu">
+          </picture>
+        </figure>
+        <h3>Emiliano <mark>Pisu</mark></h3>
+        <p>
+          Design Engineer,
+          <br>
+          <mark>Sensei</mark> &amp; Co-Host
+          <br>
+          @ Dev <mark>Dojo</mark> IT
+        </p>
+      </left>
+      <right>
+        <h6>
+          <img src="linkedin.51093a7b.svg" alt="pixu1980@linkedin">
+          linkedin.com/in/pixu1980
+        </h6>
+        <h6>
+          <img src="github.21123c11.svg" alt="pixu1980@github">
+          github.com/pixu1980
+        </h6>
+        <h6>
+          <img src="codepen.4a2f346e.svg" alt="pixu1980@codepen">
+          codepen.io/pixu1980
+        </h6>
+        <h6>
+          <img src="linkedin.51093a7b.svg" alt="devdojo@linkedin">
+          linkedin.com/company/dev-dojo-it/
+        </h6>
+        <h6>
+          <img src="youtube.4857fd9d.svg" alt="devdojo@youtube">
+          youtube.com/@devdojo_it
+        </h6>
+        <h6>
+          <img src="twitch.3c1587e7.svg" alt="devdojo@twitch">
+          twitch.tv/devdojo_it
+        </h6>
+        <h6>
+          <img src="telegram.6f39ff43.svg" alt="devdojo@telegram">
+          @devdojo_it
+        </h6>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3>
+      We can't talk about "architecture" <br>
+      without talking about <mark>Design Systems</mark>
+    </h3>
+  </section>
+  <section>
+    <blockquote>Is your Design System <mark>actually a System</mark> …or <mark>just a handful</mark> of ideas?</blockquote>
+  </section>
+  <section>
+    <h2><mark>What is</mark> a Design System?</h2>
+  </section>
+  <section>
+    <h3>
+      A Design System is a <mark>shared</mark> <br>
+      <mark>language</mark> used to define and <br>
+      collect <mark>a set of guidelines</mark>
+    </h3>
+  </section>
+  <section>
+    <h3>A Design System is a <br><mark>cultural infrastructure</mark> for the collaboration between teams</h3>
+  </section>
+  <section>
+    <h3>
+      Why do we need an <br>
+      <mark>Accessible</mark> Design System?
+    </h3>
+    <ul>
+      <li class="fragment">Color <mark>contrasts</mark> and <mark>guidelines</mark> for visibility</li>
+      <li class="fragment">Spacing and grid systems for <mark>clear structure</mark></li>
+      <li class="fragment">Typography and iconography for <mark>legibility</mark></li>
+      <li class="fragment"><mark>Visual modes</mark> and <mark>responsive</mark> design guidelines</li>
+      <li class="fragment"><mark>Motion guidelines</mark>, with reduce motion fallbacks</li>
+    </ul>
+  </section>
+</section>
+
+
+<section>
+<section>
+  <h2>What are we going to <br><mark>talk about</mark> today?</h2>
+</section>
+<section>
+  <h3><mark>Theory behind</mark> the approach</h3>
+  <ul>
+    <li class="fragment">CSS Custom Properties</li>
+    <li class="fragment">CSS Layers</li>
+    <li class="fragment">Update the Cascade</li>
+  </ul>
+</section>
+<section>
+  <h3><mark>Atomic Design</mark> Principles</h3>
+  <ul>
+    <li class="fragment">
+      Un-packing Atoms <br>
+      (Protons, Electrons and Neutrons)
+    </li>
+    <li class="fragment">Atoms</li>
+    <li class="fragment">Molecules</li>
+    <li class="fragment">Organisms</li>
+  </ul>
+</section>
+
+  <section>
+    <h3>
+      How are we going to feel<br>
+      <mark> at the end of the day</mark>?
+    </h3>
+  </section>
+  <section>
+    <h3>not like him...</h3>
+    <img src="family-guy.06ff7d67.gif" style="width: 30vw; min-width: 30rem">
+    <h3>... I'm <mark>promise</mark> 😄!!!</h3>
+  </section>
+
+<section class="slide-dive-in" data-auto-animate="">
+  <div sr-only="" data-menu-title="">Let's dive in</div>
+  <dive-in>
+    <stack-container>
+      <stack-item>Let's <mark>dive</mark> in</stack-item>
+      <stack-item>Let's <mark>dive</mark> in</stack-item>
+      <stack-item>Let's <mark>dive</mark> in</stack-item>
+      <stack-item>Let's <mark>dive</mark> in</stack-item>
+      <stack-item>Let's <mark>dive</mark> in</stack-item>
+    </stack-container>
+  </dive-in>
+</section>
+
+</section>
+
+<section>
+  <section>
+    <h3>
+      What we need first it's a <br>
+      <mark>Lean</mark> approach
+    </h3>
+  </section>
+  <section>
+    <h3>The <mark>rules</mark> of Lean Web</h3>
+  </section>
+  <section>
+    <span>#1 - You do not talk about Lean Web.</span><br>
+    <span class="fragment">#2 - You do <mark>NOT</mark> talk about Lean Web.</span><br>
+    <span class="fragment">#3 - …</span>
+  </section>
+  <section>
+    <img src="fight-club.8c7f09b7.gif" width="540" alt="Image of Tyler Durden stating the Fight Club rules">
+    <p>…just kidding 🤣!</p>
+  </section>
+  <section>
+    <h3>#1 - <mark>Minimalism</mark></h3>
+    <p>
+      Minimize the use of <mark>visual and architectural</mark> overhead, always following the paradigm
+      <mark>HTML 1st, CSS 2nd and JS 3rd</mark>
+    </p>
+    <aside class="notes">
+      Explain how minimalism in code can simplify development and reduce maintenance time. Quote Brad Frost to highlight how the complexity of modern frameworks can slow down development. Provide a
+      practical example of an application that was simplified by reducing the use of complex frameworks.
+    </aside>
+  </section>
+  <section>
+    <h3>#1 - <mark>Minimalism</mark></h3>
+    <p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-slug-hash="GgRQKwG" data-pen-title="Untitled" data-user="pixu1980">
+      <span>
+        See the Pen <a href="https://codepen.io/pixu1980/pen/GgRQKwG">Untitled</a> by pixu1980 (<a href="https://codepen.io/pixu1980"> @pixu1980</a>) on <a href="https://codepen.io">CodePen</a>.
+      </span>
+    </p>
+  </section>
+
+  <section>
+    <h3>#2 - <mark>Adoption</mark> of the Platform</h3>
+    <p>
+      Learn to combine and make the most <br>
+      of native APIs and methods of the <mark>core web technologies</mark> is simpler and more performant <br>
+      than using external frameworks and libraries
+    </p>
+  </section>
+
+  <section>
+    <h3>#2 - <mark>Adoption</mark> of the Platform</h3>
+    <p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-slug-hash="GgRQKzG" data-pen-title="HTML + CSS accordion" data-user="pixu1980">
+      <span>
+        See the Pen <a href="https://codepen.io/pixu1980/pen/GgRQKzG">HTML + CSS accordion</a> by pixu1980 (<a href="https://codepen.io/pixu1980">@pixu1980</a>) on
+        <a href="https://codepen.io">CodePen</a>.
+      </span>
+    </p>
+  </section>
+
+  <section>
+    <h3>#3 - <mark>Inclusivity</mark><br>(The Web is for Everyone!)</h3>
+    <p>
+      Creating inclusive applications means <br>
+      guaranteeing a <mark>smooth experience for everyone</mark>: <br>
+      for people with disabilities, or a slow <br>
+      connection, or a low-powered device
+    </p>
+  </section>
+  <section>
+    <h3>
+      #3 - <mark>Inclusivity</mark> <br>
+      (The Web is for Everyone!)
+    </h3>
+    <p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="result" data-slug-hash="YPzeyQO" data-pen-title="HTML + CSS accordion + JS for accessibility" data-user="pixu1980">
+      <span>
+        See the Pen
+        <a href="https://codepen.io/pixu1980/pen/YPzeyQO">HTML + CSS accordion + JS for accessibility</a> by pixu1980 (<a href="https://codepen.io/pixu1980">@pixu1980</a>) on
+        <a href="https://codepen.io">CodePen</a>.
+      </span>
+    </p>
+  </section>
+  <section>
+    <h3>#4 - <mark>Sustainability</mark> and Performance</h3>
+    <p>
+      Every byte has an <mark>environmental cost</mark>! <br>
+      We strive to reduce the energy consumption <br>
+      of our products by optimizing resources and <br>
+      reducing complexity; it is an <mark>ethical duty</mark> <br>
+      and a necessity for the future of the web
+    </p>
+  </section>
+  <section>
+    <h3>#5 - Continuous Iteration</h3>
+    <p>
+      Improvement is a <mark>never-ending process</mark>: <br>
+      we monitor, gather feedback <br>
+      and continuously optimize to <br>
+      give users the best experience, <br>
+      <mark>iteratively</mark> reducing waste and inefficiencies
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>
+      Modern design systems are <mark>stunning</mark>, <mark>sophisticated</mark>, <mark>scalable</mark>... <span class="fragment">and <mark>expensive</mark></span>
+    </h2>
+  </section>
+  <section>
+    <h3>
+      Modern CSS resets often <br>
+      <mark>discard browser defaults entirely</mark>
+    </h3>
+  </section>
+  <section>
+    <h3>
+      Introducing <mark>complexity</mark>, <br>
+      <mark>inconsistency</mark>, and <mark>technical debt</mark>
+    </h3>
+  </section>
+  <section>
+    <p balance="">
+      In some way we waste out efforts <mark>re-building</mark> what's already there, <span class="fragment">just <mark>less consistent</mark>...</span> <span class="fragment">and too often <mark>less accessible</mark></span>
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 balance=""><mark>Does it makes sense</mark> resetting CSS in <mark>2025</mark>?</h2>
+  </section>
+  <section>
+    <figure>
+      <img src="youre-not-thinking-fourth-dimensionally.7116fd2b.gif" width="550" alt="Doc. Emmet L. Brown saying 'Marty, you are not thinking fourth dimensionally!'">
+    </figure>
+  </section>
+  <section>
+    <h3 balance=""><mark>Why</mark> CSS resets were born?</h3>
+    <ul>
+      <li class="fragment">Early browsers had <mark>inconsistent default styles</mark></li>
+      <li class="fragment">Margins, paddings, font sizes <mark>varied wildly</mark></li>
+      <li class="fragment">Resets ensured a <mark>clean and predictable</mark> baseline</li>
+    </ul>
+  </section>
+  <section>
+    <h3 balance="">What does a <mark>CSS reset</mark>?</h3>
+    <ul>
+      <li class="fragment"><mark>Erase all</mark> default styles</li>
+      <li class="fragment">Force to <mark>re-apply</mark> needed styles</li>
+      <li class="fragment"><mark>Gain control</mark> over layout and spacing</li>
+      <li class="fragment">Ensure <mark>consistent rendering</mark> across browsers</li>
+    </ul>
+  </section>
+  <section>
+    <h3 balance="">What are the <mark>main concerns</mark> with CSS Resets?</h3>
+  </section>
+  <section>
+    <p balance="">Hidden costs of CSS resetting <mark>already working</mark> stuff</p>
+    <small>
+      <ol>
+        <li class="fragment"><mark>Removes or reduces accessibility defaults</mark> for users who rely on keyboards navigation</li>
+        <li class="fragment">Every “zeroed” element <mark>must therefore be redefined</mark>, adding un-useful redundancy</li>
+        <li class="fragment"><mark>Technical and Design debt</mark> at the same time, by adding third party deps which must be overridden</li>
+        <li class="fragment"><mark>Loss of useful defaults</mark> (e.g. system colors, typography, spacings, focus styles, interaction behavior)</li>
+      </ol>
+    </small>
+  </section>
+  <section>
+    <h4>Take<mark>away</mark></h4>
+    <blockquote>CSS resets <mark>were essential</mark> in the past, today we have <mark>better tools</mark>... and <mark>better defaults</mark></blockquote>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3>Maybe the <mark>leanest, fastest, most accessible</mark> UI kit is already in your browser, it <mark>just needs some style</mark>!</h3>
+  </section>
+  <section>
+    <h3>Semantic HTML is <mark>power</mark></h3>
+    <ul>
+      <li class="fragment">Structure, meaning, and accessibility <mark>baked in</mark></li>
+      <li class="fragment">Assistive technologies <mark>understands your layout</mark></li>
+      <li class="fragment">HTML is a <mark>base component system </mark> providing accordions, dialogs, popovers and many more for free, <mark>make it yours</mark>!</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Modern CSS <mark>evolving</mark> everyday</h3>
+    <ul>
+      <li class="fragment">Allows <mark>layering</mark>, <mark>nesting</mark>, <mark>scoping</mark>, <mark>targeting</mark>, <mark>transitioning</mark> (even between routes)</li>
+      <li class="fragment">User agents are improving <mark>at every release</mark>, and their default styles are <mark>converging over time</mark></li>
+      <li class="fragment">Focus indicators and roles come out of the box, <mark>no JS needed</mark> for basic interactions</li>
+    </ul>
+  </section>
+  <section>
+    <h3>
+      The Browser’s <mark>Hidden</mark> <br>
+      Design System
+    </h3>
+  </section>
+  <section>
+    <h4>
+      A <mark>crude</mark>, mostly <mark>undocumented</mark>, <br>
+      foundational design system: <span class="fragment">but <mark>real</mark>!</span>
+    </h4>
+  </section>
+  <section>
+    <comparison>
+      <left>
+        <h4 balance="">
+          <mark>System Colors</mark>
+        </h4>
+        <small balance="">Natively <mark>accessibile color palette</mark> derived from OS colors, reactive to system settings, including <mark>accent-color</mark></small>
+      </left>
+      <right>
+        <div system-colors="">
+          <ul>
+            <li style="--color: Canvas">Canvas</li>
+            <li style="--color: CanvasText">CanvasText</li>
+            <li style="--color: LinkText">LinkText</li>
+            <li style="--color: VisitedText">VisitedText</li>
+            <li style="--color: ActiveText">ActiveText</li>
+            <li style="--color: ButtonFace">ButtonFace</li>
+            <li style="--color: ButtonText">ButtonText</li>
+            <li style="--color: ButtonBorder">ButtonBorder</li>
+            <li style="--color: GrayText">GrayText</li>
+            <li style="--color: Field">Field</li>
+            <li style="--color: FieldText">FieldText</li>
+            <li style="--color: Highlight">Highlight</li>
+            <li style="--color: HighlightText">HighlightText</li>
+            <li style="--color: Mark">Mark</li>
+            <li style="--color: MarkText">MarkText</li>
+            <li style="--color: SelectedItem">SelectedItem</li>
+            <li style="--color: SelectedItemText">SelectedItemText</li>
+            <li style="--color: AccentColor">AccentColor</li>
+            <li style="--color: AccentColorText">AccentColorText</li>
+          </ul>
+          <ul>
+            <li style="--color: Canvas">Canvas</li>
+            <li style="--color: CanvasText">CanvasText</li>
+            <li style="--color: LinkText">LinkText</li>
+            <li style="--color: VisitedText">VisitedText</li>
+            <li style="--color: ActiveText">ActiveText</li>
+            <li style="--color: ButtonFace">ButtonFace</li>
+            <li style="--color: ButtonText">ButtonText</li>
+            <li style="--color: ButtonBorder">ButtonBorder</li>
+            <li style="--color: GrayText">GrayText</li>
+            <li style="--color: Field">Field</li>
+            <li style="--color: FieldText">FieldText</li>
+            <li style="--color: Highlight">Highlight</li>
+            <li style="--color: HighlightText">HighlightText</li>
+            <li style="--color: Mark">Mark</li>
+            <li style="--color: MarkText">MarkText</li>
+            <li style="--color: SelectedItem">SelectedItem</li>
+            <li style="--color: SelectedItemText">SelectedItemText</li>
+            <li style="--color: AccentColor">AccentColor</li>
+            <li style="--color: AccentColorText">AccentColorText</li>
+          </ul>
+        </div>
+      </right>
+    </comparison>
+  </section>
+  <section>
+    <comparison>
+      <left>
+        <h4 balance="">
+          <mark>Type Scale &amp; Spacings</mark>
+        </h4>
+        <small balance="">Heading elements from <mark>&lt;h1&gt;</mark> to <mark>&lt;h6&gt;</mark>, paragraphs and all other phrasing elements follow a <mark>visual hierarchy</mark>, spacings reflect an implied scale and rhythm</small>
+      </left>
+      <right>
+        <div typography="">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+          <p>Paragraph</p>
+        </div>
+      </right>
+    </comparison>
+  </section>
+  <section>
+    <comparison>
+      <left>
+        <h4 balance="">
+          <mark>Focus Styles &amp; User Input</mark>
+        </h4>
+        <small balance="">Native UI elements that adapt to <mark>platform conventions</mark>, keyboard-focused elements get visible outlines <mark>out of the box</mark></small>
+      </left>
+      <right>
+        <form native-ui="">
+          <fieldset>
+            <legend>A simple list of UI elements</legend>
+            <details name="native-ui" open="">
+              <summary>Checkables</summary>
+              <div>
+                <label><input name="radio" type="radio" checked=""> Radio 1</label> <br>
+                <label><input name="radio" type="radio" checked=""> Radio 2</label> <br>
+                <label><input name="radio" type="radio" disabled=""> Radio 3 (disabled)</label>
+              </div>
+              <div>
+                <label><input name="check" type="checkbox" checked=""> Checkbox</label> <br>
+                <label><input name="disabled-check" type="checkbox" disabled="" checked=""> Checkbox (disabled)</label>
+              </div>
+              <div>
+                <label><input name="switch" type="checkbox" checked="" switch=""> Switch</label> <br>
+                <label><input name="disabled-switch" type="checkbox" disabled="" switch=""> Switch (disabled)</label>
+              </div>
+            </details>
+            <details name="native-ui">
+              <summary>Inputs</summary>
+              <div>
+                <label>
+                  Text
+                  <input id="input" name="input" type="text" value="Input" placeholder="Enter text...">
+                </label>
+              </div>
+              <div>
+                <label>
+                  Date
+                  <input id="input" name="input" type="date" value="2025-04-14">
+                </label>
+              </div>
+              <div>
+                <label>
+                  Time
+                  <input id="input" name="input" type="time" value="13:55">
+                </label>
+              </div>
+              <div>
+                <label>
+                  Textarea
+                  <textarea placeholder="Describe your product here..." rows="5"></textarea>
+                </label>
+              </div>
+            </details>
+            <details name="native-ui">
+              <summary>Selectors</summary>
+              <div>
+                <label>
+                  Select
+                  <select>
+                    <option selected="">Select, Option 1</option>
+                    <option>Select, Option 2</option>
+                    <option disabled="">Select, Option 3 (disabled)</option>
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label>
+                  Listbox
+                  <select size="3">
+                    <option selected="">Select, Option 1</option>
+                    <option>Select, Option 2</option>
+                    <option disabled="">Select, Option 3 (disabled)</option>
+                  </select>
+                </label>
+              </div>
+            </details>
+            <button type="button">Button</button>
+            <button type="button" disabled="">Button (disabled)</button>
+          </fieldset>
+        </form>
+      </right>
+    </comparison>
+  </section>
+  <section>
+    <h3>Take<mark>away</mark></h3>
+    <blockquote>Don’t <mark>"fight"</mark> the browser anymore, <mark>embrace</mark> it!</blockquote>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 balance=""><mark>Attributes</mark> utilities</h2>
+  </section>
+  <section>
+    <h3 balance=""><mark>Attributes</mark>?? <br><span class="fragment">instead of Classes??</span></h3>
+  </section>
+  <section>
+    <h3>Modern HTML and CSS gives us the <mark>tools to do this elegantly</mark></h3>
+  </section>
+  <section>
+    <h4>A class selector and an attribute selector has exactly the <mark>same specificity</mark></h4>
+    <figure class="fragment">
+      <img src="specificity.2e8c2d71.svg" width="900" alt="CSS Specificity explaination">
+    </figure>
+  </section>
+  <section>
+    <h4>Why attribute utilities matters?</h4>
+    <ul>
+      <li class="fragment"><mark>Declarative</mark>, readable, and native to HTML</li>
+      <li class="fragment"><mark>Separate</mark> intent from implementation</li>
+      <li class="fragment"><mark>Reduce</mark> visual noise in markup</li>
+      <li class="fragment"><mark>Consistent</mark>, scalable UI state and theming</li>
+    </ul>
+  </section>
+  <section>
+    <h4 balance="">Look... our HTML is <mark> already full </mark> of attributes, at least... <mark class="fragment">it should be!</mark></h4>
+  </section>
+  <section>
+    <h4>So <mark>why not</mark> use them for CSS selectors?</h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;html data-theme="dark"&gt;
+          &lt;head&gt;&lt;/head&gt;  
+          &lt;body&gt;
+            &lt;button disabled aria-label="Close modal"&gt;x&lt;/button&gt;
+          
+            &lt;input type="email" required placeholder="Your email" /&gt;
+            
+            ...
+          &lt;/body&gt;  
+          &lt;style&gt;
+            [data-theme*="dark"] { ... }
+            [aria-label] { ... }
+            [type="email"] { ... }
+          &lt;/style&gt;  
+        &lt;/html&gt;
+      </code>
+    </pre>
+  </section>
+  <section>
+    <h4 balance="">CSS <mark>attr()</mark> function allows to get the value of an HTML attribute as a string</h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;div title="This is the title"&gt;&lt;/div&gt;
+        
+        &lt;style&gt;
+          div::after {
+            content: attr(title);
+          }
+        &lt;/style&gt;
+      </code>
+    </pre>
+  </section>
+  <section>
+    <p balance="">Unfortunately, this was traditionally limited to the CSS <mark>content</mark> property</p>
+  </section>
+  <section>
+    <h4 balance="">Do you know CSS <mark>attr()</mark> function is about to get a <mark>game-changer update</mark>?</h4>
+  </section>
+  <section>
+    <h4 balance=""><mark>What's new</mark> with attr() function?</h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;element attr="value"&gt;&lt;/element&gt;
+        
+        &lt;style&gt;
+          element {
+            property: attr(attr type(&lt;type&gt;), fallback-value);
+          }
+        &lt;/style&gt;
+      </code>
+    </pre>
+  </section>
+  <section>
+    <h4>Example: <mark>Grid Control</mark></h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;div column-start="1" column-end="3"&gt;
+          this is the div content
+        &lt;/div&gt;
+
+        &lt;style&gt;
+          div {
+            grid-column-start: attr(column-start type(&lt;integer&gt;), 1);
+            grid-column-end: attr(column-end type(&lt;integer&gt;), -1);
+          }
+        &lt;/style&gt;
+      </code>
+    </pre>
+    <small>
+      Use <mark>attr()</mark> to control grid <br>
+      layout via HTML attributes
+    </small>
+  </section>
+  <section>
+    <h4>Example: Dynamic <mark>Font Sizes &amp; Colors</mark></h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;div font-size="5em" text-color="rebeccapurple"&gt;
+          Hello World!
+        &lt;/div&gt;
+        
+        &lt;style&gt;
+          div {
+            font-size: attr(font-size type(&lt;length&gt;), 1em);
+            color: attr(text-color type(&lt;color&gt;), black);
+          }
+        &lt;/style&gt;
+      </code>
+    </pre>
+    <small>
+      Set font size, colors (or whatever) <br>
+      <mark>dynamically using attributes</mark>
+    </small>
+  </section>
+  <section>
+    <h4>Better to use <mark>data-*</mark> attributes?</h4>
+    <ul>
+      <li class="fragment">Virtually <mark>prevents conflicts</mark> with standard attributes</li>
+      <li class="fragment">Provides a <mark>clear namespace</mark> for custom data</li>
+      <li class="fragment">Accessible via JavaScript through <mark>dataset</mark></li>
+    </ul>
+  </section>
+  <section>
+    <h4>CSS <mark>Custom Properties</mark> are supported as well</h4>
+    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
+        &lt;button data-color="rebeccapurple"&gt;
+          Click me!
+        &lt;/button&gt;
+        
+        &lt;style&gt;
+          button[color] {
+            --button-color: attr(data-color type(&lt;color&gt;), Canvas);
+
+            background-color: var(--button-color);
+          }
+        &lt;/style&gt;
+      </code>
+    </pre>
+    <small>
+      Pass
+      <mark>
+        attribute values to custom <br>
+        properties
+      </mark>
+      for broader usage
+    </small>
+  </section>
+  <section>
+    <p balance=""><mark>Supported types</mark> include: angle, color, custom-ident, image, integer, length, length-percentage, number, percentage, resolution, string, time, transform-function...</p>
+  </section>
+  <section>
+    <p balance="">...unlocking <mark>infinite possibilities</mark> with typed attributes:</p>
+    <ul>
+      <li class="fragment"><mark>Content-first</mark> web design</li>
+      <li class="fragment"><mark>Declarative</mark>, readable, scalable</li>
+      <li class="fragment"><mark>No spaghetti</mark> css classes</li>
+      <li class="fragment"><mark>Reduced dependency</mark> on JS frameworks</li>
+    </ul>
+  </section>
+  <section>
+    <p>
+      No JS. No classes. <br>
+      <mark>Just semantics and style</mark>.
+    </p>
+  </section>
+  <!-- <section>
+    <h4>HTML + CSS: Finally Talking</h4>
+    <ul>
+      <li>No runtime JavaScript required</li>
+      <li>State expressed declaratively in the DOM</li>
+      <li>Custom logic baked into selectors</li>
+      <li>Greater control for theming, variants, sizing, visibility</li>
+    </ul>
+    <p><strong>HTML becomes the API. CSS becomes reactive.</strong></p>
+  </section> -->
+  <!-- <section>
+    <h4>Attribute-First = Future-Ready</h4>
+    <ul>
+      <li>Composes well with modern specs (e.g. container queries, cascade layers)</li>
+      <li>Reduces JS dependencies</li>
+      <li>Enables robust design systems that scale</li>
+      <li>Better debugging, source of truth remains in the markup</li>
+    </ul>
+    <p><em>The future of styling is declarative, expressive, and classless.</em></p>
+  </section> -->
+  <section>
+    <h4>Take<mark>away</mark></h4>
+    <small>
+      <blockquote>We’re entering an era where HTML attributes will become the <mark>new interface</mark> for UI logic, and CSS will finally treat them as <mark>first-class citizens</mark>.</blockquote>
+    </small>
+  </section>
+  <!-- <section>
+    <h3>Don't believe me? <a href="./slides/topics/_grid-system-example.html" target="_blank" rel="noopener noreferrer">Try this</a> (with Chrome)</h3>
+  </section> -->
+</section>
+
+<section>
+  <section>
+    <h2><mark>classless</mark> CSS</h2>
+  </section>
+  <section>
+    <h3><mark>What is</mark> classless CSS?</h3>
+  </section>
+  <section>
+    <h4 balance="">Less complexity, <mark>more semantics</mark>, no classes, just pure HTML elements and selectors</h4>
+  </section>
+  <section>
+    <h4 balance="">
+      <mark>Leverage browser defaults</mark>
+      instead of override their behavior, style is inferred from semantics
+    </h4>
+  </section>
+  <section>
+    <h4 balance="">Less DOM noise, better scalability, providing accessibility and performance <mark>out of the box</mark></h4>
+  </section>
+  <section>
+    <h4>Use attributes like <mark>helpers and utilities</mark></h4>
+  </section>
+  <section>
+    <h4>Popular Classless Frameworks</h4>
+    <ul>
+      <li><mark>Pico.css</mark> - beautiful defaults &amp; theming</li>
+      <li><mark>Water.css</mark> - zero-config elegance</li>
+      <li><mark>Almond.css</mark> - opinionated and light</li>
+    </ul>
+  </section>
+  <section>
+    <h4>Examples</h4>
+    <ul>
+      <li><a href="pix/pix-no-css.html" target="_blank" rel="noopener noreferrer">Example no CSS</a></li>
+      <li><a href="pix/pix-with-meyer-reset.html" target="_blank" rel="noopener noreferrer">Example with Meyer Reset</a></li>
+      <li><a href="pix/pix-with-modern-reset.html" target="_blank" rel="noopener noreferrer">Example with Modern Reset</a></li>
+      <li><a href="pix/pix.html" target="_blank" rel="noopener noreferrer">Example with CSS</a></li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>CSS Custom Properties</h2>
+    <p>
+      <mark>--*</mark>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
+    </p>
+    <p class="fragment">
+      Introduced by Firefox in July 2014,<br>
+      and fully supported across browsers<br>
+      since <mark>April 2017</mark>
+    </p>
+  </section>
+  
+<section>
+  <h4><mark>Centralizing</mark> values</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|2,3|7,8">
+:root {
+  --text-color: #34eadb;
+  --font-size: 16px;
+}
+
+body {
+  color: var(--text-color);
+  font-size: var(--font-size);
+}
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Flowing with the <mark>cascade</mark></h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|7">
+:root {
+  --text-color: #34eadb;
+  --font-size: 16px;
+}
+
+body {
+  --font-size: 18px;
+
+  color: var(--text-color);
+  font-size: var(--font-size);
+}
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4><mark>Dynamic</mark> and <mark>Conditional</mark> overrides...</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|6-11">
+:root {
+  --text-color: #202020;
+  --background-color: #efefef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #efefef;
+    --background-color: #202020;
+  }
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>...the same goes for <mark>Responsive</mark></h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|5-9">
+:root {
+  --padding: 8px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --padding: 16px;
+  }
+}
+
+.container {
+  padding: var(--padding);
+}
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2>Javascript <mark>interaction</mark></h2>
+  <p>
+    Common js <mark>"CRUD" operations</mark><br>
+    with CSS custom properties
+  </p>
+</section>
+
+<section>
+  <h4>Writing a variable to an element (<mark>C</mark>R<mark>U</mark>D)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
+const button = document.querySelector('button');
+
+// sets the "--text-color" value
+// to the element's CSSStyleDeclaration
+button.style.setProperty('--text-color', '#e74c3c');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Writing a variable to :root (<mark>C</mark>R<mark>U</mark>D)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
+const root = document.documentElement;
+
+// sets the "--text-color" value 
+// to the root element's CSSStyleDeclaration
+root.style.setProperty('--text-color', '#e74c3c');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Reading a variable from an element (C<mark>R</mark>UD)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-6|9-13">
+const button = document.querySelector('button');
+
+// gets the "--text-color" value
+// from element's CSSStyleDeclaration
+//! may be null-ish if the variable 
+//! is not defined on the element itself
+button.style.getPropertyValue('--text-color');  
+
+// gets the "--text-color" value
+// from the element's ComputedStyle, 
+// so with inherited values too
+//! may be null-ish if the variable is not defined on 
+//! the element itself nor any of its ancestors
+getComputedStyle(button).getPropertyValue('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Reading a variable from :root (C<mark>R</mark>UD)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-5">
+const root = document.documentElement;
+
+// gets the "--text-color" value
+// from the root element's ComputedStyle
+//! may be null-ish if the variable is not defined
+getComputedStyle(root).getPropertyValue('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Deleting a variable from an element (CRU<mark>D</mark>)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
+const button = document.querySelector('button');
+
+// deletes the "--text-color" variable
+// from the element's CSSStyleDeclaration
+button.style.removeProperty('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Deleting a variable from :root (CRU<mark>D</mark>)</h4>
+  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
+const root = document.documentElement;
+
+// deletes the "--text-color" variable
+// from the root element's CSSStyleDeclaration
+root.style.removeProperty('--text-color');
+    </code>
+  </pre>
+</section>
+
+</section>
+
+<section>
+  <section>
+    <h2>CSS Layers</h2>
+    <p>
+      <mark>@layer</mark>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
+    </p>
+    <p class="fragment">
+      Introduced by Firefox in February 2022,<br>
+      and fully supported across browsers<br>
+      since <mark>March 2022</mark>
+    </p>
+  </section>
+  
+<section>
+  <h4>CSS Layers Example</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|3-8|10-14|16-24|1">
+@layer reset, layout, components;
+
+@layer reset {
+  * {
+    box-sizing: border-box;
+    ...
+  }
+}
+
+@layer components {
+  button {
+    border-size: 1px solid lightgray;
+  }
+}
+
+@layer layout {
+  body {
+    display: grid;
+    grid-template-areas:
+      'header header'
+      'aside main'
+      'footer footer';
+  }
+}
+  </code></pre>
+</section>
+
+  <section>
+  <h4>Layers depths levels</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|2-10|3-5|12-20|13-15">
+@layer ui {
+  @layer button {
+    :root {
+      --button--font-size: 18px;
+    }
+
+    button {
+      font-size: var(--button--font-size);
+    }
+  }
+
+  @layer input {
+    :root {
+      --input--font-size: 20px;
+    }
+
+    input {
+      font-size: var(--input--font-size);
+    }
+  } 
+}
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h3>That's awesome, but ...</h3>
+</section>
+
+<section>
+  <h3>
+    ... what about <mark>old CSS</mark> codebase <br>
+    and <mark>un-layered third-party</mark> deps?
+  </h3>
+</section>
+
+<section>
+  <h3>
+    The <mark>layer()</mark> function will be<br>
+    your best friend
+  </h3>
+</section>
+
+<section>
+  <h4>@import ... layer() pattern</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|1|2|3|5-7|9">
+@import 'path-to-old-dependency.css' layer(old);
+@import 'path-to-old-dependency.theme.css' layer(old.theme);
+@import 'path-to-other-old-dependency.css' layer(old.other);
+      
+@layer new-library {
+  ...
+}
+
+// un-layered code
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h3>Reverse Cascade</h3>
+</section>
+<section>
+  <h4>Which <mark>--ui--font--size</mark> wins?</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|11-13|6-8|1-3">
+:root {
+  --ui--font-size: 10px;
+}
+    
+@layer ui {
+  :root {
+    --ui--font-size: 16px;
+  }
+
+  @layer button {
+    :root {
+      --ui--font-size: 18px;
+    }
+
+    button {
+      font-size: var(--ui--font-size);
+    }
+  }
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <img src="reverse-cascade.9182c717.gif" style="width: 33vw; min-width: 30rem">
+  <br>
+  <h3>
+    Look at me Ma'...<br>
+    I'm <mark>reversing waterfalls</mark>
+  </h3>
+</section>
+<section>
+  <h3>
+    So CSS layers are actually<br>
+    <mark>"breaking"</mark> the cascade?
+  </h3>
+</section>
+<section>
+  <h3>
+    Absolutely <mark>not</mark>!<br>
+    <span class="fragment">
+      They're actually <mark>flowing</mark><br>
+      with the cascade.
+    </span>
+  </h3>
+</section>
+
+</section>
+
+<section cascade="">
+  <section>
+    <h2>The <mark>"C"</mark> in CSS</h2>
+  </section>
+  <section>
+    <blockquote>
+      The <mark>Cascade</mark> is an <mark>algorithm</mark>
+      that defines how user agents combine property values originating from different sources.
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade" target="_blank" rel="noopener noreferrer">MDN</a>
+    </blockquote>
+  </section>
+  <section>
+    <h3>
+      What are the <mark>players</mark> involved<br>
+      in the algorithm?
+    </h3>
+    <ul>
+      <li class="fragment">user-agent stylesheets</li>
+      <li class="fragment">user stylesheets</li>
+      <li class="fragment">author stylesheets <span class="fragment">(+ inline styles)</span></li>
+    </ul>
+  </section>
+  <section>
+    <h3>How the cascade algorithm handles the <mark>precedence of declarations</mark>?</h3>
+    <ol>
+      <li class="fragment">user-agent declarations</li>
+      <li class="fragment">user declarations</li>
+      <li class="fragment">author and inline declarations</li>
+      <li class="fragment">@keyframe animations</li>
+      <li class="fragment">!important 😞 author and inline declarations</li>
+      <li class="fragment">!important 😢 user declarations</li>
+      <li class="fragment">!important 😭 user-agent declarations</li>
+      <li class="fragment">transitions</li>
+    </ol>
+  </section>
+  <section>
+    <h3>
+      How the @layer <br>
+      <mark>integrates into this</mark>?
+    </h3>
+    <ol>
+      <li class="fragment">@layer 1 declarations</li>
+      <li class="fragment">@layer ... declarations</li>
+      <li class="fragment">@layer N declarations</li>
+      <li class="fragment">un-layered declarations</li>
+      <li class="fragment">inline declarations</li>
+    </ol>
+  </section>
+  <section>
+    <h3>
+      What about <br>
+      <mark>@layer</mark> and <mark>!important</mark>?
+    </h3>
+    <ol>
+      <li class="fragment">!important 😟 un-layered declarations</li>
+      <li class="fragment">!important 😞 @layer N declarations</li>
+      <li class="fragment">!important 😖 @layer ... declarations</li>
+      <li class="fragment">!important 😫 @layer 1 declarations</li>
+      <li class="fragment">!important 😢 inline declarations</li>
+    </ol>
+  </section>
+  <section>
+    <h3>So in the end...</h3>
+  </section>
+  <section>
+    <h4>Order of <mark>precedence</mark> (lower to higher priority)</h4>
+    <small>
+      <ol>
+        <li class="fragment">user-agent declarations</li>
+        <li class="fragment">user declarations</li>
+        <li class="fragment">
+          author declarations
+          <ol>
+            <li class="fragment">@layer 1 declarations</li>
+            <li class="fragment">@layer ... declarations</li>
+            <li class="fragment">@layer N declarations</li>
+            <li class="fragment">un-layered declarations</li>
+            <li class="fragment">inline declarations</li>
+          </ol>
+        </li>
+        <li class="fragment">@keyframe animations</li>
+        <li class="fragment">
+          !important 😟 author and inline declarations
+          <ol>
+            <li class="fragment">!important 😞 un-layered declarations</li>
+            <li class="fragment">!important 😖 @layer N declarations</li>
+            <li class="fragment">!important 😫 @layer ... declarations</li>
+            <li class="fragment">!important 😢 @layer 1 declarations</li>
+            <li class="fragment">!important 😭 inline declarations</li>
+          </ol>
+        </li>
+        <li class="fragment">!important 😡 user declarations</li>
+        <li class="fragment">!important 🤬 user-agent declarations</li>
+        <li class="fragment">transitions</li>
+      </ol>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section>
+  <h3>
+    Let's <mark>"seed"</mark> a Design System <br>
+    with <mark>Atomic APIs</mark>
+  </h3>
+</section>
+<section>
+  <h4>the <mark>"seed"</mark></h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|4-9|11-18|20-31|33-45">
+@layer design-system {
+  /* here goes the design system css code */
+
+  @layer reset {
+    * {
+      box-sizing: border-box;
+      ...
+    }
+  }
+  
+  @layer motion {
+    :root {
+      --ds--m--animation-speed: .25s;
+      --ds--m--animation-speed--reduce: .15s;
+      
+      --ds--m--animation-easing: ease-in-out;
+      --ds--m--animation-easing-reduce: linear;
+    }
+    
+    /* Default animation */
+    @keyframes myAwesomeAnimation {
+      0% { transform: translateX(0); opacity: 0; }
+      50% { transform: translateX(100px); opacity: 0.5; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    .element {
+      animation-name: myAwesomeAnimation;
+      animation-duration: var(--ds--m--animation-speed);
+      animation-timing-function: var(--ds--m--animation-easing);
+    }
+    
+    /* Simpler animation for reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      @keyframes myAwesomeAnimation {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+  
+      .element {
+        animation-name: myAwesomeAnimation;
+        animation-duration: var(--ds--m--animation-speed--reduce);
+        animation-timing-function: var(--ds--m--animation-easing--reduce);
+      }
+    }
+  }
+
+  ...
+} 
+
+/* 
+here goes the application/project specific
+code and design system overrides
+*/
+    </code>
+  </pre>
+</section>
+
+  <section>
+    <h3>
+      <mark>Extending</mark> and <mark>breaking down</mark> <br>
+      Atomic Design (<a href="https://atomicdesign.bradfrost.com" target="_blank" rel="noopener noreferrer">by Brad Frost</a>)
+    </h3>
+    <p>Its <mark>principles</mark> takes cues from the chemistry itself</p>
+  </section>
+  <section>
+    <figure>
+      <figcaption>A picture is worth a thousand words</figcaption>
+      <picture>
+        <source srcset="atomic-design-process.745172d6.webp" type="image/webp">
+        <img src="atomic-design-process.0034486a.jpg" alt="Image showing the Atomic Design process (from atoms, to molecules, to organisms, to templates, to pages)">
+      </picture>
+    </figure>
+  </section>
+  <section>
+    <h3><mark>Un-packing</mark> Atoms</h3>
+  </section>
+  <section>
+  <h2><mark>Neutrons</mark></h2>
+  <h3>Spacing, Radius, Grid System</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Neutrons as the <mark>design glue</mark>, giving harmony, rhythm and space.</blockquote>
+</section>
+<section>
+  <p>Providing <mark>structure and stability</mark>, neutrons are invisible forces which <mark>hold everything together</mark>: spacing, grid systems, layout rules.</p>
+</section>
+<section>
+  <h4><mark>Neutrons</mark>: Spacing, Radius, Grid System</h4>
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|9-21|23-31|33-40|42-55|57-62|72-76|80-90|92-99|101-116|118-130|134-146">
+@layer design-system {
+  ...
+
+  @layer neutrons {
+    :root {
+      /* here goes the neutrons common variables */    
+    }
+    
+    @layer spacings {
+      :root {
+        --ds--s--xxs: 0.4rem;
+        --ds--s--sx: 0.8rem;
+        --ds--s--sm: 1.2rem;
+        --ds--s--md: 1.5rem;
+        --ds--s--lg: 2rem;
+        --ds--s--xl: 2.4rem;
+        --ds--s--xxl: 3.2rem;
+        
+        ...
+      }
+    }
+
+    @layer radius {
+      :root {
+        --ds--r--xxs: 0.4rem;
+        --ds--r--sx: 0.8rem;
+        --ds--r--sm: 1.2rem;
+        
+        ...
+      }
+    }
+
+    @layer grid-system {
+      :root {
+        --ds--gs--container--size: 100vw;
+        --ds--gs--container--gap: 1.5rem;
+        --ds--gs--cols: 12;
+        --ds--gs--gap: 1.5rem;
+        --ds--gs--v-gap: 1.5rem;
+      }
+      
+      @layer container {
+        [container] {
+          gap: var(--ds--gs--container--gap);
+          inline-size: var(--ds--gs--container--size);
+          flex-flow: column;
+          block-size: auto;
+          margin: 0 auto;
+          padding: 0;
+          display: flex;
+      
+          &amp;[fluid] {
+            --ds--gs--container--size: 100%;
+          }
+        }
+        
+        @layer breakpoints {
+          @media screen and (width &gt;= 414px) {
+            :root {
+              --ds--gs--container--size: 375px;
+            }
+          }
+        
+          @media screen and (width &gt;= 576px) {
+            :root {
+              --ds--gs--container--size: 540px;
+            }
+          }
+        
+          ...
+        
+          @media screen and (width &gt;= 1920px) {
+            :root {
+              --ds--gs--container--size: 1600px;
+            }
+          }
+        }
+      }
+      
+      @layer row {
+        [row] {
+          grid-template-columns: repeat(var(--ds--gs--cols), 1fr);
+          gap: var(--ds--gs--v-gap) var(--ds--gs--gap);
+          grid-template-rows: auto;
+          grid-auto-flow: row;
+          inline-size: 100%;
+          margin: 0;
+          display: grid;
+        }
+      }
+      
+      @layer column {
+        [col] {
+          grid-column: auto / span var(--ds--gs--cols);
+          max-inline-size: var(--ds--gs--container--size);
+          border: 1px solid red;
+          flex-flow: column;
+          display: flex;
+        }
+
+        @layer sizes {
+          [col] {
+            &amp;[size~="1"] {
+              grid-column-end: span 1;
+            }
+        
+            &amp;[size~="2"] {
+              grid-column-end: span 2;
+            }
+        
+            ... 
+            
+            &amp;[size~="12"] {
+              grid-column-end: span 12;
+            }
+          }
+        
+          @media screen and (width &gt;= 414px) {
+            [col] {
+              &amp;[size~="xs-1"] {
+                grid-column-end: span 1;
+              }
+              
+              ...
+        
+              &amp;[size~="xs-12"] {
+                grid-column-end: span 12;
+              }
+            }
+          }
+        
+          ...
+        
+          @media screen and (width &gt;= 1920px) {
+            [col] {
+              &amp;[size~="xxl-1"] {
+                grid-column-end: span 1;
+              }
+        
+              ...
+        
+              &amp;[size~="xxl-12"] {
+                grid-column-end: span 12;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ...
+} 
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2><mark>Electrons</mark></h2>
+  <h3>Typography and Iconography</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Electrons as the <mark>expressive traits</mark> particles</blockquote>
+</section>
+<section>
+  <p balance="">Active and essential, <mark>representing the expressive part</mark> of the design system, <mark>communicating content and meaning</mark></p>
+</section>
+<section>
+  <p balance="">Fonts, weights, sizes, and icons work dynamically within layouts, often <mark>adapting across contexts</mark></p>
+</section>
+<section>
+  <h4><mark>Electrons</mark>: Typography and Iconography</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-20|22-25|27-38|40-51|53-63|65-75|77-87|89-99|103-106">
+@layer design-system {
+  ...
+
+  @layer electrons {
+    :root {
+      /* here goes the electrons common variables */    
+    }
+    
+    @layer typography {
+      :root {
+        --ds--t--ratio: 1.125; /* major second */
+        --ds--t--font-size--base: 1.6rem;
+        
+        --ds--t--line-height--base: 1.5;
+      
+        --ds--t--font-weight: 400;
+        --ds--t--font-style: normal;
+        --ds--t--letter-spacing: initial;
+        --ds--t--text-decoration: none;
+      }
+      
+      html {
+        /* 
+          16px/10px = 0.625, expressed in em
+          makes the font-size reactive to browser settings
+          and makes 1rem = 10px,
+          allowing to use rems as a simple division base-10 value
+        */
+        font-size: 0.625em;
+      }
+      
+      body {
+        /* resets the base content font-size to 1.6rem = 16px */
+        --ds--t--font-size: var(--ds--t--font-size--base);
+        --ds--t--line-height: var(--ds--t--line-height--base);
+      
+        font-family: var(--ds--t--font-family);
+        font-size: var(--ds--t--font-size);
+        line-height: var(--ds--t--line-height);
+        font-weight: var(--ds--t--font-weight);
+        font-style: var(--ds--t--font-style);
+        letter-spacing: var(--ds--t--letter-spacing);
+        text-decoration: var(--ds--t--text-decoration);
+      
+        :where(*) {
+          --ds--t--font-size: var(--ds--t--font-size--base);
+          --ds--t--line-height: var(--ds--t--line-height--base);
+      
+          font-family: var(--ds--t--font-family);
+          font-size: var(--ds--t--font-size);
+          line-height: var(--ds--t--line-height);
+          font-weight: var(--ds--t--font-weight);
+          font-style: var(--ds--t--font-style);
+          letter-spacing: var(--ds--t--letter-spacing);
+          text-decoration: var(--ds--t--text-decoration);
+        }
+
+        h1 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 6));
+        }
+        
+        h2 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 5));
+        }
+        
+        h3 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 4));
+        }
+        
+        h4 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 3));
+        }
+        
+        h5 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 2));
+        }
+        
+        h6 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 1));
+        }
+      
+        :where(h1, h2, h3, h4, h5, h6) {
+          --ds--t--font-weight: 700;
+        }
+      
+        :where(h1, h2, h3, h4, h5, h6, p, ul, ol, pre) {
+          margin: 0;
+      
+          + &amp; {
+            margin-block-start: var(--ds--spacings--md);
+          }
+        }
+      
+        li + li {
+          margin-block-start: calc(var(--ds--spacings--md) / 2);
+        }
+      
+        a {
+          --ds--t--text-decoration: underline;
+      
+          &amp;:hover {
+            --ds--t--text-decoration: none;
+          }
+        }
+      }      
+    }
+    
+    @layer iconography { 
+      /* iconography variables and classes, 
+        e.g. icomoon.io/app */
+    }
+
+  } 
+
+  ...
+}
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2><mark>Protons</mark></h2>
+  <h3>Colors, Focus and Shadows</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Protons as the <mark>personality traits</mark> particles.</blockquote>
+</section>
+<section>
+  <p>Protons define the <mark>visual essence of a design</mark> giving character, tone, elevation and layering. These choices <mark>impact the overall look</mark> of a digital product.</p>
+</section>
+<section>
+  <h2>Come to the <mark>light-dark()</mark> side!</h2>
+  <p>
+    <img src="yoda.3bbd05d3.gif" width="700">
+  </p>
+</section>
+<section>
+  <p><mark>light-dark()</mark></p>
+  <pre>    <code class="hljs html" data-trim="" data-line-numbers="">
+      &lt;meta name="color-scheme" content="light dark" /&gt;
+      <!-- &lt;meta name="color-scheme" content="light" /&gt; forcing light color scheme -->
+      <!-- &lt;meta name="color-scheme" content="dark" /&gt; forcing light color scheme -->
+    </code>
+  </pre>
+  <pre>    <code class="hljs css" data-trim="" data-line-numbers="|2|7-9">
+      :root {
+        color-scheme: light dark;
+        /* color-scheme: light; */ /* forcing light color scheme */
+        /* color-scheme: dark; */ /* forcing dark color scheme */
+      }
+      
+      body {
+        color: light-dark(#fefefe, #202020);
+      }
+    </code>
+  </pre>
+</section>
+<section>
+  <h2>color-scheme and light-dark()</h2>
+  <p>
+    <mark>@layer</mark>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
+  </p>
+  <p class="fragment">
+    Fully supported across browsers<br>
+    since <mark>May 2024</mark>
+  </p>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Colors</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|5-7|9-20|22-31|33-41|45-59">
+@layer design-system {
+  ...
+
+  @layer protons {
+    :root {
+      /* here goes the protons common variables */    
+    }
+    
+    @layer colors {
+      :root {
+        /* neutral colors - same in light and dark modes */
+        --ds--c--n-100: hsl(248, 28%, 84%);
+        --ds--c--n-200: hsl(248, 28%, 78%);
+        --ds--c--n-300: hsl(248, 28%, 70%);
+        --ds--c--n-400: hsl(248, 28%, 58%);
+        --ds--c--n-500: hsl(248, 28%, 48%);
+        --ds--c--n-600: hsl(248, 70%, 30%);
+        --ds--c--n-700: hsl(248, 70%, 22%);
+        --ds--c--n-800: hsl(248, 70%, 14%);
+        --ds--c--n-900: hsl(248, 70%, 8%);
+      
+        /* blue */
+        --ds--c--b-100: light-dark(
+          hsl(245, 94%, 98%), 
+          hsl(245, 73%, 98%)
+        );
+        
+        --ds--c--b-200: light-dark(
+          hsl(245, 94%, 94%), 
+          hsl(245, 73%, 94%)
+        );
+        
+        --ds--c--b-300: light-dark(
+          hsl(245, 94%, 84%), 
+          hsl(245, 73%, 84%)
+        );
+        
+        --ds--c--b-400: light-dark(
+          hsl(245, 94%, 74%), 
+          hsl(245, 73%, 74%)
+        );
+        
+        ...
+        
+        /* high contrast preference */
+        @media (prefers-contrast: more) {
+          :root {
+            /* redefine here color variables
+              for the high contrast */
+          }
+        }
+
+        /* low contrast preference */
+        @media (prefers-contrast: less) {
+          :root {
+            /* redefine here color variables
+              for the low contrast */
+          }
+        }
+      }
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Focus</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|8-14|16-20">
+@layer design-system {
+  ...
+
+  @layer protons {
+    ...
+    
+    @layer focus {
+      :root {
+        --ds--f--size: 3px;
+        --ds--f--style: solid;
+        --ds--f--color: var(--ds--c--n-400);
+        --ds--f--offset: var(--ds--f--size);
+        --ds--f--radius: var(--ds--r--xxs);
+      }
+      
+      :focus-visible {
+        outline: var(--ds--f--size) var(--ds--f--style) var(--ds--f--color);
+        outline-offset: var(--ds--f--offset);
+        border-radius: var(--ds--f--radius);
+      }
+      
+      ...
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Shadows</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-18|20-29|33-38">
+@layer design-system {
+  ...
+
+  @layer protons {
+    ...
+
+    @layer elevations {
+      :root {
+        /* basic shadow colors */
+        --ds--e--shadow-color-1: light-dark(
+          var(--ds--c--n-100), 
+          var(--ds--c--n-500)
+        );
+        
+        --ds--e--shadow-color-2: light-dark(
+          var(--ds--c--n-500),
+          var(--ds--c--n-900)
+        );
+
+        /* xxs, usually for user input elements
+          (inputs, selects, textareas, ...) */
+        --ds--e--100: 
+          0 0 3px -1px var(--ds--e--shadow-color-1);
+
+        /* xs, usually for elements closest to the application 
+          background, for example cards */
+        --ds--e-200: 
+          0 0 5px 2px var(--ds--e--shadow-color-1),
+          0 0 5px -2px var(--ds--e--shadow-color-2);
+          
+        ...
+          
+        /* xl, usually for elements highest in the stacking order,
+          for example notifications and toasts,
+          which should be above all other content */
+        --ds--e-600: 
+          0 4px 24px -3px var(--ds--e--shadow-color-1),
+          0 18px 64px -8px var(--ds--e--shadow-color-2);
+      }
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2><mark>Atoms</mark></h2>
+  <h3>The Building Blocks</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Atoms as the <mark>smallest working unit</mark> defining their <mark>role</mark>, <mark>function</mark> and <mark>appearance</mark>.</blockquote>
+</section>
+<section>
+  <p>Each atom represents a <mark>foundational standalone component</mark>, for example: a button, an input field or a label. Carrying <mark>unique properties and behaviors</mark>.</p>
+</section>
+<section>
+  <p>And most importantly <mark>they can't be broken down</mark> without losing meaning or purpose.</p>
+</section>
+<section>
+  <h4><mark>Atoms</mark>: The Building Blocks</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-24|27-33">
+@layer design-system {
+  ...
+  
+  @layer atoms {
+    :root {
+      /* common components variables */
+    }
+    
+    @layer button { 
+      :root {
+        --ds--c-btn--padding-inline: var(--ds--s--md);
+        --ds--c-btn--border-size: 1px;
+        --ds--c-btn--border-style: solid;
+        --ds--c-btn--border-color: var(--ds--c--b-200);
+        --ds--c-btn--border-radius: var(--ds--r--xxs);
+      }
+      
+      button {
+        padding-inline: var(--ds--c-btn--padding-inline);
+        border-size: var(--ds--c-btn--border-size);
+        border-style: var(--ds--c-btn--border-style);
+        border-color: var(--ds--c-btn--border-color);
+        border-radius: var(--ds--c-btn--border-radius);
+      }
+    }
+    
+    @layer input { 
+      /* input component variables and styles */
+    }
+    
+    @layer select {
+      /* select component variables and styles */
+    }
+
+    ...
+  }
+  
+  ...
+} 
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2><mark>Molecules</mark></h2>
+  <h3>Composed but Cohesive</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Molecules as <mark>reusable interaction patterns</mark>, retaining and enhancing properties of their atoms</blockquote>
+</section>
+<section>
+  <p>
+    Molecules are formed by atoms <mark>bonded together in a stable configuration</mark>, retaining properties of their atoms and gaining new functionality from the interaction, forming
+    <mark>semantic and functional unit</mark> (like a label + input, or an icon + button).
+  </p>
+</section>
+<section>
+  <h4><mark>Molecules</mark>: Composed but Cohesive</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-18|20-30|33-39">
+@layer design-system {
+  ...
+
+  @layer molecules {
+    :root {
+      /* here goes the molecules common variables */    
+    }
+    
+    @layer accordion { 
+      :root {
+        --ds--c-acc--gap: var(--ds--s--md);
+        
+        --ds--c-acc--padding-inline: var(--ds--s--md);
+        --ds--c-acc--border-size: 1px;
+        --ds--c-acc--border-style: solid;
+        --ds--c-acc--border-color: var(--ds--c--b-200);
+        --ds--c-acc--border-radius: var(--ds--r--xxs);
+      }
+      
+      [accordion] {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: var(--ds--c-acc--gap);
+        
+        padding-inline: var(--ds--c-acc--padding-inline);
+        border-size: var(--ds--c-acc--border-size);
+        border-style: var(--ds--c-acc--border-style);
+        border-color: var(--ds--c-acc--border-color);
+        border-radius: var(--ds--c-acc--border-radius);
+      }
+    }
+
+    @layer date-picker {
+      /* date-picker component variables and styles */
+    }
+
+    @layer dialog {
+      /* dialog component variables and styles */
+    }
+  }
+
+  ...
+} 
+    </code>
+  </pre>
+</section>
+
+  <section>
+  <h2><mark>Organisms</mark></h2>
+  <h3>Complex, Functional Units</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Organisms as <mark>interface areas with a specific purpose</mark>, converging responsiveness, layout, accessibility, visual language and interactions.</blockquote>
+</section>
+<section>
+  <p>
+    Organisms are are <mark>collections of molecules</mark> (and sometimes atoms) organized to <mark>perform complex and coordinated functions</mark>, structure, behavior (headers, cards, product
+    previews, or nav bars).
+  </p>
+</section>
+<section>
+  <h4><mark>Organisms</mark>: Complex, Functional Units</h4>
+  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-19|21-25|38-43|27-35|45-57|59-67">
+@layer design-system {
+  ...
+
+  @layer organisms {
+    :root {
+      /* here goes the organisms common variables */    
+    }
+    
+    @layer search {
+      /*
+        &lt;label&gt;
+          Search
+          &lt;span field-container&gt;
+            &lt;input type="search" aria-label="Search"
+              placeholder="Type you search query here..." /&gt;
+            &lt;button&gt;🔍&lt;/button&gt;
+          &lt;/span&gt;
+        &lt;/label&gt;
+      */
+      
+      :root {
+        --ds--c-src--direction: column;
+        --ds--c-src--place-content: start;
+        --ds--c-src--place-items: start;
+        --ds--c-src--gap: var(--ds--s--sm);
+
+        --ds--c-src--container--direction: column;
+        --ds--c-src--container--place-content: start;
+        --ds--c-src--container--place-items: start;
+        --ds--c-src--container--gap: var(--ds--s--sm);
+        
+        --ds--c-src--container--border-size: 1px;
+        --ds--c-src--container--border-style: solid;
+        --ds--c-src--container--border-color: var(--ds--c--n-700);
+        --ds--c-src--container--border-radius: var(--ds--r--xxs);
+      }
+      
+      label:has([type="search"]) {
+        display: inline-flex;
+        flex-flow: var(--ds--c-src--direction) nowrap;
+        place-content: var(--ds--c-src--place-content);
+        place-items: var(--ds--c-src--place-items);
+        gap: var(--ds--c-src--gap);
+        
+        [field-container] {
+          display: inline-flex;
+          flex-flow: var(--ds--c-src--container--direction) nowrap;
+          place-content: var(--ds--c-src--container--place-content);
+          place-items: var(--ds--c-src--container--place-items);
+          gap: var(--ds--c-src--container--gap);
+        }
+        
+        :where(input, button) {
+          border-size: var(--ds--c-src--container--border-size);
+          border-style: var(--ds--c-src--container--border-style);
+          border-color: var(--ds--c-src--container--border-color);
+        }
+        
+        input {
+          border-top-left-radius: var(--ds--c-src--container--border-radius);
+          border-bottom-left-radius: var(--ds--c-src--container--border-radius);
+        }
+            
+        button {
+          border-top-right-radius: var(--ds--c-src--container--border-radius);
+          border-bottom-right-radius: var(--ds--c-src--container--border-radius);
+        }
+      }
+    }
+    
+    ...
+  }
+
+  ...
+} 
+    </code>
+  </pre>
+</section>
+
+  <section>
+    <h3>
+      <mark>That's It</mark>! Atomic CSS APIs<br>
+      are now <mark>ready to use</mark>...
+    </h3>
+  </section>
+  <section>
+    <h3>...<mark>layered</mark> selectors and values can be easily overridden by <mark>un-layered</mark> ones</h3>
+  </section>
+  <section>
+    <h4>Overriding example</h4>
+    <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|1-9|11-22">
+@layer design-system {
+  ...
+  
+  @layer molecules {
+    ...
+  }
+  
+  ...
+}
+          
+:root {
+  --ds--c--dark: #202020;
+  --ds--c--light: #fefefe;
+
+  --ds--e--shadow-color-1: hsla(210, 3%, 36%, 0.16);
+  --ds--e--shadow-color-2: hsla(213, 5%, 42%, 0.38);
+
+  --ds--t--font-size: 2.2rem;
+  --ds--t--line-height: 1.25;
+  
+  ...
+}
+      </code>
+    </pre>
+  </section>
+  <!-- <include src="./slides/topics/atomic-apis/_templates.html"></include>
+  <include src="./slides/topics/atomic-apis/_pages.html"></include> -->
+  <section>
+    <h4>
+      Let's take a look at the <br>
+      <a href="https://pixu1980.github.io/pix-css/" target="_blank" rel="noopener noreferrer">pixCSS example</a>
+    </h4>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Visual <mark>Integrity Testing</mark></h2>
+    <p>
+      Plan for maintenance from the start <br>
+      to <mark>ensure long-term scalability</mark>.
+    </p>
+  </section>
+  <section>
+    <h3><mark>No-Regression</mark> Testing</h3>
+    <ul>
+      <li class="fragment">Automated <mark>snapshot compare</mark> of UI states, with pixel-by-pixel diffing</li>
+      <li class="fragment"><mark>Detect</mark> unintended <mark>visual changes</mark> over time</li>
+      <li class="fragment"><mark>Highlight visual differences</mark> between versions</li>
+    </ul>
+  </section>
+  <section>
+    <h3><mark>Tooling</mark></h3>
+    <ul>
+      <li class="fragment">
+        <mark>Playwright</mark>, or similar <br>
+        End-to-end testing framework.
+      </li>
+      <li class="fragment">
+        <mark>Storybook + Chromatic/Loki</mark> <br>
+        Component testing with visual review and no-regression testing
+      </li>
+      <li class="fragment">
+        <mark>Percy</mark> <br>
+        Automated visual review platform.
+      </li>
+    </ul>
+  </section>
+  <section>
+    <p>A <mark>well-planned override strategy</mark> improves flexibility and adoption.</p>
+  </section>
+  <section>
+    <h3>Documentation &amp; <mark>Overrides</mark></h3>
+    <ul>
+      <li class="fragment">Allow <mark>customization</mark></li>
+      <li class="fragment">Provide <mark>clear APIs</mark></li>
+      <li class="fragment">Playgrounds with <mark>Storybook</mark> or <mark>Zeroheight</mark></li>
+      <li class="fragment">Show <mark>live examples</mark> in the documentation</li>
+    </ul>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h2><mark>Wrap</mark> Up</h2>
+    <h3>
+      Pros and Cons of an <br>
+      <mark>Accessible Design System</mark>
+    </h3>
+  </section>
+  <section>
+    <h3>Pros</h3>
+    <ul>
+      <li class="fragment"><mark>Consistency</mark> and <mark>scalability</mark></li>
+      <li class="fragment">Integrated systemic <mark>accessibility</mark></li>
+      <li class="fragment">Flexibility through <mark>declarative overrides</mark></li>
+      <li class="fragment">Automation in <mark>visual testing</mark></li>
+    </ul>
+  </section>
+  <section>
+    <h3>Cons</h3>
+    <ul>
+      <li class="fragment"><mark>Learning curve</mark> for Custom Properties and Layers</li>
+      <li class="fragment"><mark>Effort</mark> for documentation maintenance</li>
+      <li class="fragment">Effort for implementing testing <mark>processes</mark></li>
+    </ul>
+  </section>
+  <section>
+    <h3>Final Thoughts</h3>
+  </section>
+  <section>
+    <p balance="">An accessible and <mark>well-structured</mark> design system offers numerous benefits in terms of <mark>consistency and scalability</mark></p>
+  </section>
+  <section>
+    <p>However, it requires ongoing effort in management, documentation, and testing to <mark>maintain quality and visual integrity</mark>.</p>
+  </section>
+</section>
+
+<section data-transition="convex">
+<!-- <section links data-transition="convex">
+  <h4>Slides Repo</h4>
+  <figure>
+    <picture>
+      <source srcset="./assets/qrcodes/slides-repo.png?as=webp" type="image/webp" />
+      <img src="./assets/qrcodes/slides-repo.png" alt="Slides Repo on Github" />
+    </picture>
+  </figure>
+</section> -->
+  <section links="" data-transition="convex">
+    <h4>An Awesome CSS Link a Day</h4>
+    <figure>
+      <picture>
+        <source srcset="an-awesome-css-link-a-day.946692e4.webp" type="image/webp">
+        <img src="an-awesome-css-link-a-day.4138fb7d.png" alt="Pixu.dev">
+      </picture>
+    </figure>
+  </section>
+  <section links="" data-transition="convex">
+    <h4>Slides Repo</h4>
+    <figure>
+      <picture>
+        <source srcset="slides-repo.3a0ff1ba.webp" type="image/webp">
+        <img src="slides-repo.43918a09.png" alt="Slides Repo on Github">
+      </picture>
+    </figure>
+  </section>
+
+  <section class="slide-outro-taf" data-transition="convex">
+  <!-- <div sr-only data-menu-title>That's All Folks</div> -->
+  <audio data-autoplay="" src="taf.f9b512b9.mp3"></audio>
+  <div class="taf-wrapper">
+    <div class="circles">
+      <div class="circle one"></div>
+      <div class="circle two"></div>
+      <div class="circle three"></div>
+      <div class="circle four"></div>
+      <div class="circle five"></div>
+      <div class="circle six"></div>
+      <small>© 1987-2025 - Warner Bros. Entertainment Inc.</small>
+    </div>
+    <svg style="isolation: isolate" viewBox="0 0 566.44 157.5">
+      <g id="thats-all-folks">
+        <path id="Q1" data-name="Q1" d="M14.07,103.92c-1.34,6.6-2,9.89-3.2,16.46l-1.65.87c.14-6,.23-9,.46-15Z"></path>
+        <path id="Q2" data-name="Q2" d="M22.06,99.79c-1.4,6.62-2.07,9.91-3.35,16.49l-1.66.86c.21-6,.34-9,.62-15.09Z"></path>
+        <path id="T1-1" data-name="T1" d="M102.69,61.11l1.43,1.13h0a40.47,40.47,0,0,1-4.31,4.55h0a47.22,47.22,0,0,1-4.87,3.84h0a57.45,57.45,0,0,1-5.34,3.24h0c-1.85,1-3.75,1.91-5.68,2.77h0q-3.66,1.62-7.79,3.09h0l-8.21,2.89h0c-2.72,1-5.33,1.9-7.86,2.82h0c-2.52.93-4.76,1.87-6.74,2.83h0a33.31,33.31,0,0,0-7.53,4.91h0a24.9,24.9,0,0,0-5.09,6h0a17.75,17.75,0,0,0-2.36,6.59h0a14.62,14.62,0,0,0,.62,6.71h0a9.72,9.72,0,0,0,2.19,3.78h0a7.41,7.41,0,0,0,3.32,2h0a10.31,10.31,0,0,0,4.22.22h0a16.63,16.63,0,0,0,4.85-1.56h0a26.81,26.81,0,0,0,4.37-2.7h0A30.46,30.46,0,0,0,62,110.43h0l1.16,1.06h0a29,29,0,0,1-4.68,4.64h0a30.65,30.65,0,0,1-5.8,3.69h0a19.64,19.64,0,0,1-5.3,1.72h0a12.69,12.69,0,0,1-5-.11h0a9.53,9.53,0,0,1-4.27-2.24h0a10.82,10.82,0,0,1-2.91-4.74h0a16.12,16.12,0,0,1-.88-5.88h0A17.9,17.9,0,0,1,35.47,103h0a21.55,21.55,0,0,1,2.79-5.1h0a32.51,32.51,0,0,1,4-4.54h0a36.81,36.81,0,0,1,4.89-3.87h0a46.76,46.76,0,0,1,5.33-3.05h0a74.43,74.43,0,0,1,7.1-3h0c2.56-.94,5.19-1.87,7.87-2.79h0l8.11-2.82h0c2.71-1,5.31-2,7.8-3.08h0c1.87-.83,3.69-1.71,5.48-2.66h0A52.51,52.51,0,0,0,94,69h0a45.18,45.18,0,0,0,4.62-3.62h0a36,36,0,0,0,4.06-4.3Z"></path>
+        <path id="T1-2" data-name="T1" d="M79.54,81l1.41.43h0a66.66,66.66,0,0,0-3.23,9.82h0c-.81,3.27-1.48,6.49-2,9.66h0q-.81,4.75-1.44,9.32h0c-.41,3-.9,6-1.47,8.8h0a72.38,72.38,0,0,1-2.09,8.06h0a33.52,33.52,0,0,1-3.25,7.14h0a28,28,0,0,1-5,6.07h0a30,30,0,0,1-7.33,4.84h0A24.47,24.47,0,0,1,48,147.44h0a14.21,14.21,0,0,1-5.81-.26h0a10,10,0,0,1-4.39-2.51h0A11.5,11.5,0,0,1,35,140.18h0a14.25,14.25,0,0,1-.55-2h0a9.87,9.87,0,0,1-.19-1.9h0l1.85-.35h0a12.84,12.84,0,0,0,.17,1.65h0a11,11,0,0,0,.45,1.75h0a9,9,0,0,0,2.83,4.24h0a9.4,9.4,0,0,0,4.21,1.91h0a13.62,13.62,0,0,0,5-.08h0A21.33,21.33,0,0,0,54,143.64h0a20.57,20.57,0,0,0,6.12-4.42h0a25.5,25.5,0,0,0,4.15-6h0A38.13,38.13,0,0,0,67,126h0q1.05-3.91,1.86-8.24h0q.81-4.32,1.59-8.94h0q.78-4.62,1.92-9.33h0a88.24,88.24,0,0,1,2.83-9.38h0A50.49,50.49,0,0,1,79.54,81Z"></path>
+        <path id="H-1" data-name="H" d="M94.58,96.07c-.7,4.48-1,6.71-1.72,11.18h0A58.62,58.62,0,0,1,95.45,101h0a40.44,40.44,0,0,1,3.07-5.4h0a25,25,0,0,1,3.42-4.13h0a12.2,12.2,0,0,1,3.68-2.5h0a5.28,5.28,0,0,1,2.23-.49h0a3,3,0,0,1,1.59.46h0a3.22,3.22,0,0,1,1,1.08h0a5.38,5.38,0,0,1,.58,1.4h0a8.76,8.76,0,0,1,.17,3h0a35.59,35.59,0,0,1-.55,3.6h0c-.25,1.27-.55,2.59-.87,4h0c-.32,1.36-.61,2.67-.86,4h0a31.6,31.6,0,0,0-.51,3.63h0a9,9,0,0,0,.22,3h0a2.82,2.82,0,0,0,.76,1.35h0a1.29,1.29,0,0,0,1.49.14h0a5.21,5.21,0,0,0,2.19-2.17h0a27,27,0,0,0,2-4.07h0c.64-1.58,1.26-3.29,1.84-5.14h0q.89-2.78,1.6-5.37h0l1.53.48h0c-.17.46-.38,1.17-.64,2.14h0c-.25,1-.55,2.07-.91,3.3h0c-.35,1.22-.76,2.5-1.24,3.84h0a33.41,33.41,0,0,1-1.63,3.8h0a17.15,17.15,0,0,1-2.06,3.19h0a6.54,6.54,0,0,1-2.54,2h0a8.87,8.87,0,0,1-1.87.54h0a4.11,4.11,0,0,1-1.85-.09h0a3.53,3.53,0,0,1-1.59-1h0a5.25,5.25,0,0,1-1.11-2.26h0a11.84,11.84,0,0,1-.36-3.73h0a31.47,31.47,0,0,1,.5-4.12h0c.27-1.4.6-2.79,1-4.16h0c.4-1.38.76-2.67,1.09-3.87h0c.32-1.21.58-2.28.76-3.23h0a5.24,5.24,0,0,0,.07-2.24h0c-.25-1-.85-1.25-1.8-.85h0A10.59,10.59,0,0,0,102,94h0a34,34,0,0,0-3.6,5.34h0A67.7,67.7,0,0,0,95.2,106h0q-1.45,3.54-2.61,6.93h0c-1,4.91-1.5,7.35-2.47,12.24l-3.49.12h0q1.62-11.52,3.11-22.75h0q1.5-11.23,3.43-22.41h0c.2-1.16.45-2.43.76-3.81h0c.31-1.39.67-2.79,1.08-4.22h0c.42-1.43.9-2.84,1.45-4.22h0A30.08,30.08,0,0,1,98.29,64h0a16.46,16.46,0,0,1,2.22-3.07h0a7.66,7.66,0,0,1,2.67-1.9h0a3.49,3.49,0,0,1,2.75-.17h0A2.87,2.87,0,0,1,107.46,61h0a10.51,10.51,0,0,1,0,4.14h0a36.71,36.71,0,0,1-1.32,5.44h0q-.93,3-2.3,6.26h0q-1.37,3.32-2.93,6.66h0q-1.56,3.36-3.2,6.58h0c-1.09,2.15-2.14,4.15-3.16,6Z"></path>
+        <path id="H-2" data-name="H" d="M103.84,60.84h0a5.63,5.63,0,0,0-2.71,2.47h0a20.29,20.29,0,0,0-1.93,5.24h0c-.58,2.31-1.17,5.24-1.75,8.8h0c-.57,3.55-1.26,7.92-2,13.07h0q2.89-5.43,4.94-10.21h0q2-4.78,3.28-8.55h0a45.92,45.92,0,0,0,1.7-6.34h0a10,10,0,0,0,.18-3.65h0a1.24,1.24,0,0,0-.63-.86h0A1.29,1.29,0,0,0,103.84,60.84Z"></path>
+        <path id="A1-1" data-name="A1" d="M143.63,75.69l1.28.07h0c-.19.73-.46,1.7-.82,2.91h0c-.36,1.21-.74,2.53-1.14,4h0c-.39,1.44-.78,2.94-1.15,4.5h0c-.38,1.55-.69,3-1,4.51h0a39.15,39.15,0,0,0-.54,4h0a10.31,10.31,0,0,0,.11,3h0c.17.76.43,1.19.78,1.3h0a1.8,1.8,0,0,0,1.23-.1h0a5.43,5.43,0,0,0,2-1.42h0a15.27,15.27,0,0,0,1.8-2.38h0a29.22,29.22,0,0,0,1.58-3h0c.5-1.06,1-2.11,1.37-3.15h0c.42-1,.79-2,1.12-3h0c.32-.93.6-1.71.83-2.36h0l1.52.51h0c-.26.91-.58,1.91-.95,3h0c-.37,1.09-.79,2.2-1.27,3.33h0c-.47,1.14-1,2.27-1.58,3.39h0A25.27,25.27,0,0,1,146.9,98h0a16.26,16.26,0,0,1-2.32,2.55h0a9.08,9.08,0,0,1-2.7,1.66h0a3.54,3.54,0,0,1-3.41-.07h0a4.69,4.69,0,0,1-1.76-2.92h0l-.12-.63h0a4.72,4.72,0,0,1-.09-.8h0a41,41,0,0,1-2.53,5h0a24.29,24.29,0,0,1-2.56,3.53h0a14.88,14.88,0,0,1-2.6,2.34h0a14.18,14.18,0,0,1-2.57,1.39h0a7.44,7.44,0,0,1-2.63.56h0a5.63,5.63,0,0,1-2.39-.45h0a5.23,5.23,0,0,1-1.94-1.52h0a6.91,6.91,0,0,1-1.23-2.66h0a15,15,0,0,1-.27-5h0a24.36,24.36,0,0,1,1.81-6.91h0a33,33,0,0,1,3-6h0a30.62,30.62,0,0,1,3.54-4.52h0a22.38,22.38,0,0,1,3.61-3.09h0a17,17,0,0,1,3.29-1.76h0a9.83,9.83,0,0,1,5.33-.83h0a3.87,3.87,0,0,1,2.82,2.55h0c.36-.78.75-1.56,1.15-2.35h0c.41-.8.83-1.61,1.27-2.43Z"></path>
+        <path id="A1-2" data-name="A1" d="M136.75,93.48h0c.2-.62.44-1.4.72-2.35h0c.28-.94.58-1.92.9-2.93h0c.32-1,.64-2,.95-2.93h0c.31-1,.6-1.75.84-2.4h0a6.62,6.62,0,0,0-.32-1h0a3.48,3.48,0,0,0-.81-1.26h0a2.89,2.89,0,0,0-1.56-.78h0a4.73,4.73,0,0,0-2.57.39h0a13.48,13.48,0,0,0-2.46,1.3h0a17.84,17.84,0,0,0-2.71,2.29h0A24.49,24.49,0,0,0,127,87.18h0a29.86,29.86,0,0,0-2.52,4.57h0a31.21,31.21,0,0,0-2.35,7.41h0a14.38,14.38,0,0,0,0,5.87h0a4.23,4.23,0,0,0,1.69,2.75h0a3.11,3.11,0,0,0,2.88.06h0a9.75,9.75,0,0,0,3.42-2.32h0a18.11,18.11,0,0,0,2.64-3.51h0a35.55,35.55,0,0,0,2.12-4.18h0C135.52,96.35,136.14,94.9,136.75,93.48Z"></path>
+        <path id="T2" data-name="T2" d="M148.85,68.21c2.61-.93,3.92-1.39,6.56-2.3h0c.17-.49.48-1.35.94-2.56h0q.68-1.83,1.65-4.08h0c.66-1.5,1.39-3,2.21-4.59h0a32.36,32.36,0,0,1,2.54-4.1h0l1.92.39h0c-.84,2-1.66,4.18-2.48,6.44h0c-.82,2.26-1.59,4.58-2.33,7h0c4.93-1.68,7.4-2.5,12.4-4.12-.19.83-.29,1.25-.48,2.09-5.07,1.65-7.59,2.5-12.6,4.22h0q-1.1,3.78-2,7.46h0c-.57,2.45-1,4.78-1.38,7h0a52.78,52.78,0,0,0-.64,6h0a19.84,19.84,0,0,0,.27,4.59h0c.31,1.54.89,2.51,1.73,2.92h0a3.5,3.5,0,0,0,2.84,0h0a7.29,7.29,0,0,0,2.69-1.9h0a23.1,23.1,0,0,0,2.49-3.18h0a41,41,0,0,0,2.2-3.78h0c.67-1.33,1.27-2.56,1.78-3.69h0c.51-1.14.93-2.12,1.26-2.95h0c.32-.82.52-1.34.6-1.53h0l1.52.51h0q-1,2.51-2.16,5.37h0a46.93,46.93,0,0,1-2.77,5.54h0a26.73,26.73,0,0,1-3.57,4.8h0a12.09,12.09,0,0,1-4.58,3.11h0a6.58,6.58,0,0,1-2.9.48h0a4.85,4.85,0,0,1-2.33-.83h0a5.68,5.68,0,0,1-1.72-1.93h0a9.64,9.64,0,0,1-1-2.87h0a19.21,19.21,0,0,1-.29-3.16h0a42.06,42.06,0,0,1,.22-5.08h0c.19-2,.53-4.28,1-6.85h0a75.74,75.74,0,0,1,2.2-8.47h0c-2.49.87-3.73,1.31-6.2,2.2C148.62,69.48,148.7,69.06,148.85,68.21Z"></path>
+        <path id="Q3" data-name="Q3" d="M189.41,32.72c-2.28,5.94-3.32,8.94-6.18,15.24l-1.91.56c1.62-6,2.77-9,4-14.74C187,33.35,187.77,33.14,189.41,32.72Z"></path>
+        <path id="S1" data-name="S1" d="M198.47,53.77h0a7.32,7.32,0,0,1-.36.78h0a8.82,8.82,0,0,0-.42,1h0a6.58,6.58,0,0,0-.3,1.2h0a5.58,5.58,0,0,0,0,1.53h0a7.44,7.44,0,0,0,.61,1.86h0q.52,1.14,1.14,2.61h0c.41,1,.82,2.07,1.22,3.25h0a19.36,19.36,0,0,1,.86,3.75h0a15.88,15.88,0,0,1-.12,5.36h0a15.33,15.33,0,0,1-1.6,4.43h0a30.11,30.11,0,0,0,4.74-5.66h0a56.32,56.32,0,0,0,4.36-8.18h0l1.33.72h0A61,61,0,0,1,207.16,72h0a39.61,39.61,0,0,1-3.6,5.4h0A28.38,28.38,0,0,1,199.13,82h0a16.83,16.83,0,0,1-5.26,3h0a7.16,7.16,0,0,1-4.47.3h0a4,4,0,0,1-2.75-2.91h0l1.26-.7h0a1.85,1.85,0,0,0,.29.61h0a2.27,2.27,0,0,0,.74.7h0a3.12,3.12,0,0,0,1.26.39h0a3.83,3.83,0,0,0,1.75-.26h0a5.81,5.81,0,0,0,2.31-1.46h0a8.89,8.89,0,0,0,1.62-2.28h0a13.16,13.16,0,0,0,1-2.78h0a19.55,19.55,0,0,0,.52-3h0a23.94,23.94,0,0,0,.11-2.89h0a22,22,0,0,0-.18-2.48h0c-.09-.74-.22-1.54-.39-2.42h0c-.17-.88-.35-1.71-.52-2.51h0c-.17-.79-.32-1.49-.46-2.08h0c-.13-.59-.21-1-.23-1.16h0v-.07h0a14.84,14.84,0,0,0-.87,1.72h0c-.33.73-.67,1.54-1,2.42h0c-.37.87-.73,1.76-1.09,2.67h0c-.37.9-.69,1.73-1,2.47h0l-.72,1.84h0q-.27.72-.27.75h0l-1.31-.57h0s.23-.63.65-1.78h0q.62-1.73,1.66-4.37h0q1-2.65,2.38-5.85h0Q195.5,56,197,53h0Z"></path>
+        <path id="A2-1" data-name="A2" d="M256,45.54l1.26.33h0q-.37.95-1.08,2.49h0c-.47,1-1,2.15-1.5,3.37h0q-.79,1.85-1.59,3.84h0c-.52,1.32-1,2.61-1.39,3.87h0A30.94,30.94,0,0,0,250.8,63h0a8.36,8.36,0,0,0-.19,2.71h0c.09.72.31,1.17.64,1.34h0a2.16,2.16,0,0,0,1.25.17h0a4.89,4.89,0,0,0,2.12-.83h0a11.65,11.65,0,0,0,2-1.74h0a20.76,20.76,0,0,0,1.87-2.3h0c.6-.84,1.16-1.69,1.67-2.53h0c.51-.85,1-1.65,1.39-2.42h0l1.05-2h0l1.46.82h0c-.34.77-.75,1.61-1.22,2.5h0c-.47.9-1,1.81-1.57,2.73h0a32.17,32.17,0,0,1-1.91,2.69h0a18,18,0,0,1-2.24,2.36h0a12.48,12.48,0,0,1-2.57,1.76h0a8.51,8.51,0,0,1-2.89.89h0a4.09,4.09,0,0,1-3.41-.79h0a4.68,4.68,0,0,1-1.45-3h0l-.06-.59h0a3.51,3.51,0,0,1,0-.73h0a31.61,31.61,0,0,1-3.06,4h0a19.42,19.42,0,0,1-2.94,2.65h0a13.06,13.06,0,0,1-2.86,1.59h0a12.85,12.85,0,0,1-2.72.77h0a8.27,8.27,0,0,1-2.67,0h0a6.31,6.31,0,0,1-2.32-.83h0a5.27,5.27,0,0,1-1.72-1.7h0a6.26,6.26,0,0,1-.91-2.62h0a13,13,0,0,1,.32-4.55h0a20.32,20.32,0,0,1,2.56-5.93h0a27,27,0,0,1,3.63-4.86h0A25.7,25.7,0,0,1,238,49.17h0a19.47,19.47,0,0,1,3.87-2.09h0a16.21,16.21,0,0,1,3.41-.94h0a10.33,10.33,0,0,1,5.34.33h0a4.37,4.37,0,0,1,2.54,2.91h0c.43-.63.89-1.26,1.36-1.9h0c.49-.63,1-1.28,1.48-1.94Z"></path>
+        <path id="A2-2" data-name="A2" d="M247.48,60.21h0c.26-.51.57-1.17,1-2h0c.37-.8.77-1.62,1.19-2.46h0c.42-.85.83-1.67,1.24-2.46h0c.4-.78.76-1.45,1.07-2h0a9.76,9.76,0,0,0-.22-1h0a3.83,3.83,0,0,0-.68-1.31h0a3.39,3.39,0,0,0-1.47-1h0a5.18,5.18,0,0,0-2.57-.17h0a12.24,12.24,0,0,0-2.55.69h0a15.12,15.12,0,0,0-2.91,1.52h0a20.93,20.93,0,0,0-3.05,2.52h0a24.08,24.08,0,0,0-3,3.64h0a25.3,25.3,0,0,0-3.14,6.26h0a12.1,12.1,0,0,0-.67,5.29h0a4.1,4.1,0,0,0,1.36,2.78h0a3.49,3.49,0,0,0,2.85.58h0a9.41,9.41,0,0,0,3.66-1.43h0a15.64,15.64,0,0,0,3-2.63h0a30.72,30.72,0,0,0,2.56-3.32h0C246,62.54,246.73,61.37,247.48,60.21Z"></path>
+        <path id="L1-1" data-name="L1" d="M286.47,15.47h0a4.25,4.25,0,0,1,2.34.38h0a2.31,2.31,0,0,1,1.09,2.06h0a8.57,8.57,0,0,1-.28,2.6h0a27.49,27.49,0,0,1-1.06,3.35h0c-.46,1.21-1,2.5-1.64,3.85h0q-.94,2-2.07,4.05h0c-.74,1.35-1.52,2.66-2.34,3.95h0c-.81,1.28-1.63,2.48-2.44,3.57h0q-2.43,3.33-4.2,5.62h0q-1.75,2.28-3,3.88h0c-.85,1.06-1.56,1.92-2.15,2.59h0c-.58.67-1.1,1.24-1.55,1.72h0c-.45.48-.86.92-1.25,1.32h0c-.38.39-.77.83-1.17,1.3h0a10,10,0,0,0,0,2.51h0c.1.78.19,1.5.26,2.16h0a7.72,7.72,0,0,0,1.55,4.3h0a3.54,3.54,0,0,0,3.08,1.18h0a6,6,0,0,0,2.47-.79h0a14.23,14.23,0,0,0,2.36-1.75h0A20.79,20.79,0,0,0,278.66,61h0c.7-.87,1.37-1.75,2-2.63h0c.62-.89,1.18-1.75,1.67-2.57h0l1.3-2.15h0l1.46.88h0c-.07.1-.27.48-.62,1.14h0c-.35.67-.82,1.47-1.4,2.41h0c-.58,1-1.27,2-2.08,3h0a25.61,25.61,0,0,1-2.67,3h0a16.26,16.26,0,0,1-3.1,2.39h0a8.1,8.1,0,0,1-3.46,1.12h0a8.43,8.43,0,0,1-3-.28h0a6.74,6.74,0,0,1-2.63-1.44h0a9.06,9.06,0,0,1-2.05-2.74h0A12.75,12.75,0,0,1,263,59h0a28.44,28.44,0,0,1,0-6.58h0a47.23,47.23,0,0,1,1.4-7.09h0a55.66,55.66,0,0,1,2.52-7.17h0a67.82,67.82,0,0,1,3.36-6.84h0a55.56,55.56,0,0,1,3.95-6.1h0a43.09,43.09,0,0,1,4.24-4.94h0a23.05,23.05,0,0,1,4.2-3.37h0A9,9,0,0,1,286.47,15.47Z"></path>
+        <path id="L1-2" data-name="L1" d="M267,52.6h0q2.85-3.33,5.51-6.73h0c1.78-2.27,3.44-4.5,5-6.71h0q2.34-3.3,4.29-6.4h0c1.3-2.06,2.4-4,3.31-5.8h0a36.09,36.09,0,0,0,2.07-4.89h0a9.77,9.77,0,0,0,.6-3.71h0a1.5,1.5,0,0,0-.38-.71h0a.9.9,0,0,0-.78-.4h0a6.18,6.18,0,0,0-3.08,1.7h0a29.62,29.62,0,0,0-3.94,4.23h0a61.06,61.06,0,0,0-4.2,6.12h0a66.86,66.86,0,0,0-3.85,7.39h0a65,65,0,0,0-3,8h0A40.77,40.77,0,0,0,267,52.6Z"></path>
+        <path id="L2-1" data-name="L2" d="M308.5,13.82h0a4.12,4.12,0,0,1,2.31.46h0a2.35,2.35,0,0,1,1,2.12h0a8.88,8.88,0,0,1-.39,2.62h0a29.21,29.21,0,0,1-1.17,3.38h0c-.5,1.22-1.09,2.51-1.77,3.86h0c-.68,1.35-1.41,2.71-2.19,4.06h0c-.78,1.35-1.59,2.66-2.44,4h0c-.85,1.28-1.7,2.47-2.53,3.56h0c-1.68,2.21-3.11,4.07-4.32,5.58h0c-1.21,1.52-2.24,2.8-3.11,3.85h0c-.87,1.05-1.6,1.91-2.19,2.57h0c-.6.65-1.12,1.22-1.58,1.69h0c-.46.48-.88.91-1.27,1.29h0c-.39.39-.79.82-1.2,1.28h0a10.45,10.45,0,0,0,0,2.55h0c.08.8.15,1.53.21,2.2h0a8.05,8.05,0,0,0,1.41,4.42h0a3.5,3.5,0,0,0,3,1.31h0a5.57,5.57,0,0,0,2.43-.72h0A13.23,13.23,0,0,0,297,62.17h0a22.45,22.45,0,0,0,2.23-2.32h0c.71-.86,1.39-1.73,2-2.61h0c.63-.88,1.2-1.74,1.71-2.56h0l1.34-2.15h0l1.4.95h0c-.07.09-.29.48-.65,1.14h0c-.36.66-.84,1.47-1.44,2.41h0c-.6.94-1.31,1.95-2.13,3h0a26.42,26.42,0,0,1-2.69,3h0a16.07,16.07,0,0,1-3.11,2.31h0a7.39,7.39,0,0,1-3.42,1h0A7.9,7.9,0,0,1,289.4,66h0a6.67,6.67,0,0,1-2.55-1.56h0a9.27,9.27,0,0,1-2-2.85h0a13.29,13.29,0,0,1-1.05-4.29h0a29.68,29.68,0,0,1,.19-6.68h0a46,46,0,0,1,1.57-7.14h0a56.13,56.13,0,0,1,2.69-7.2h0a72.35,72.35,0,0,1,3.54-6.85h0A56.62,56.62,0,0,1,296,23.33h0a43.08,43.08,0,0,1,4.39-4.89h0a23.67,23.67,0,0,1,4.29-3.29h0A8.82,8.82,0,0,1,308.5,13.82Z"></path>
+        <path id="L2-2" data-name="L2" d="M288.05,50.94h0c1.94-2.18,3.81-4.4,5.64-6.64h0q2.73-3.37,5.14-6.67h0q2.42-3.29,4.45-6.38h0c1.36-2.06,2.52-4,3.48-5.8h0A37.75,37.75,0,0,0,309,20.54h0a10,10,0,0,0,.73-3.75h0a1.43,1.43,0,0,0-.34-.73h0a.88.88,0,0,0-.76-.43h0a6.14,6.14,0,0,0-3.12,1.63h0a29.15,29.15,0,0,0-4.07,4.18h0a61.91,61.91,0,0,0-4.37,6.09h0a66.27,66.27,0,0,0-4.06,7.4h0a67,67,0,0,0-3.17,8h0A43.15,43.15,0,0,0,288.05,50.94Z"></path>
+        <path id="F-1" data-name="F" d="M388.05,23.16l1.08,1.19h0s-.52.39-1.5,1.18h0c-1,.79-2.3,2-4,3.67h0c-1.7,1.66-3.69,3.78-6,6.37h0c-2.34,2.6-4.88,5.69-7.67,9.29h0c-.75,1-1.14,1.47-1.9,2.45h0c1-.17,1.93-.33,2.92-.48h0c1-.14,2-.27,3-.38h0l1.94-.26h0a38,38,0,0,1,2.72-3.37h0a17.09,17.09,0,0,1,2.18-2h0a6.23,6.23,0,0,1,1.78-1h0a4.28,4.28,0,0,1,1.42-.21h0a2.86,2.86,0,0,1,1.5.56h0a1.93,1.93,0,0,1,.66,1.76h0a3.64,3.64,0,0,1-.63,1.87h0a6.3,6.3,0,0,1-1.63,1.63h0a11.1,11.1,0,0,1-2.48,1.3h0a17.2,17.2,0,0,1-3.15.84h0c-.6.92-1.23,1.89-1.87,2.9h0c-.65,1-1.34,2-2.05,3h0q-1.08,1.53-2.22,3h0c-.76,1-1.55,1.91-2.37,2.78h0l-2.91-2.48h0c.29-.26.74-.68,1.34-1.25h0c.59-.57,1.24-1.21,1.93-1.92h0c.7-.71,1.38-1.47,2.06-2.26h0c.67-.8,1.25-1.55,1.74-2.27h0l.69-1.07h0c-1.33.19-2.68.4-4,.62h0c-1.36.23-2.76.48-4.21.78h0c-2.55,3.18-5,6.07-6.75,8.66h0a45.81,45.81,0,0,1-5.4,6.59h0a21,21,0,0,1-5.88,4.16h0a16.58,16.58,0,0,1-7.17,1.44h0a18.38,18.38,0,0,1-5.39-.84h0a17.39,17.39,0,0,1-5-2.41h0A14.2,14.2,0,0,1,327,63.13h0a9.65,9.65,0,0,1-1.54-5.28h0a9.51,9.51,0,0,1,.85-4.17h0a9.24,9.24,0,0,1,2.42-3.11h0a10.82,10.82,0,0,1,3.59-1.94h0a14.34,14.34,0,0,1,4.31-.68h0a14.66,14.66,0,0,1,3.71.45h0a16.36,16.36,0,0,1,3.53,1.34h0a15.93,15.93,0,0,1,3.11,2.14h0a15.22,15.22,0,0,1,2.49,2.83h0l-1.3,1h0a11.63,11.63,0,0,0-2.07-1.95h0a13.3,13.3,0,0,0-2.55-1.46h0a14.3,14.3,0,0,0-2.85-.9h0a13.43,13.43,0,0,0-3-.3h0a11.72,11.72,0,0,0-3.16.46h0A8.09,8.09,0,0,0,331.78,53h0a7.5,7.5,0,0,0-2,2.48h0a8.19,8.19,0,0,0-.76,3.67h0a7.54,7.54,0,0,0,.92,3.61h0a9.48,9.48,0,0,0,2.44,2.89h0A12,12,0,0,0,336,67.6h0a12.9,12.9,0,0,0,4.28.72h0A12.63,12.63,0,0,0,346,67h0a19.26,19.26,0,0,0,4.89-3.64h0a38.63,38.63,0,0,0,4.46-5.48h0q2.16-3.16,4.42-6.76h0c-.61.21-1.23.44-1.86.68h0c-.64.24-1.27.49-1.91.75h0l-.45-1.8h0l2.91-1h0l2.76-.93h0a72.09,72.09,0,0,1,5.43-7.07h0q3-3.6,6.3-7h0a78.73,78.73,0,0,1,7-6.37h0a49.73,49.73,0,0,1,8-5.24Z"></path>
+        <path id="F-2" data-name="F" d="M360.17,41.44c.21.67.31,1,.51,1.69h0a28.37,28.37,0,0,1-6.19,2.19h0a26,26,0,0,1-5.73.68h0a17.12,17.12,0,0,1-5.72-.91h0a14.12,14.12,0,0,1-4.52-2.53h0a11.54,11.54,0,0,1-3-3.91h0a11.55,11.55,0,0,1-1-5.06h0a15.18,15.18,0,0,1,1.29-6.16h0a15.74,15.74,0,0,1,3.38-4.78h0a19.6,19.6,0,0,1,5-3.5h0a34.84,34.84,0,0,1,6.16-2.33h0a41.93,41.93,0,0,1,6.77-1.27h0a56.25,56.25,0,0,1,6.81-.31h0a58.5,58.5,0,0,1,7.78.67h0c2.57.39,5.05.83,7.46,1.31h0l7,1.41h0a56.79,56.79,0,0,0,6.65.93h0a43.46,43.46,0,0,0,6.83,0h0a49.07,49.07,0,0,0,5.33-.68h0a28.62,28.62,0,0,0,3.46-.85h0c.83-.27,1.26-.41,1.28-.4h0c.39.69.58,1,1,1.74h0c-.08,0-.56.2-1.45.49h0a32.6,32.6,0,0,1-3.66.9h0a52.93,52.93,0,0,1-5.57.71h0a46.81,46.81,0,0,1-7.18-.05h0a61.94,61.94,0,0,1-7-.94h0c-2.26-.44-4.53-.89-6.83-1.36h0q-3.44-.7-7.15-1.28h0a58.85,58.85,0,0,0-7.87-.64h0a42.27,42.27,0,0,0-10.59,1h0a24.62,24.62,0,0,0-7.9,3.26h0a14.83,14.83,0,0,0-4.87,5.19h0a14.77,14.77,0,0,0-1.75,6.81h0a9.75,9.75,0,0,0,.85,4.52h0a9.11,9.11,0,0,0,2.48,3.21h0a10.87,10.87,0,0,0,3.61,1.91h0a14.36,14.36,0,0,0,4.26.64h0a20.25,20.25,0,0,0,3.77-.35h0a28.42,28.42,0,0,0,3.22-.81h0c.93-.3,1.68-.58,2.25-.83h0c.57-.25.87-.37.89-.37Z"></path>
+        <path id="F-3" data-name="F" d="M383.45,41.44h0c-.47,0-1,.33-1.66,1.07h0a30.27,30.27,0,0,0-2.18,2.92h0a11.23,11.23,0,0,0,2.16-.81h0a6.32,6.32,0,0,0,1.31-.89h0a2.57,2.57,0,0,0,.67-.91h0a2.81,2.81,0,0,0,.22-.91h0a.34.34,0,0,0-.15-.35h0A.77.77,0,0,0,383.45,41.44Z"></path>
+        <path id="O-1" data-name="O" d="M405,60.4h0a1.94,1.94,0,0,0,.33.07h0l.38,0h0a10.18,10.18,0,0,0,2.12,0h0a6,6,0,0,0,1.75-.43h0a5.78,5.78,0,0,0,1.51-1h0a8.1,8.1,0,0,0,1.37-1.55h0L414,58.8h0a9.24,9.24,0,0,1-3.95,3h0a10.3,10.3,0,0,1-4.49.47h0a7.93,7.93,0,0,1-1.56-.32h0a19.44,19.44,0,0,1-3.84,4h0a19.71,19.71,0,0,1-4.31,2.54h0a18.7,18.7,0,0,1-4.42,1.28h0a18.94,18.94,0,0,1-4.12.2h0a12.15,12.15,0,0,1-3.59-.8h0a8.54,8.54,0,0,1-2.8-1.75h0a7.11,7.11,0,0,1-1.74-2.56h0a7.64,7.64,0,0,1-.5-3.26h0a10.64,10.64,0,0,1,.88-3.63h0a20,20,0,0,1,2.05-3.63h0a26.61,26.61,0,0,1,2.87-3.41h0a31.6,31.6,0,0,1,3.45-3h0a31.5,31.5,0,0,1,3.73-2.41h0a21.19,21.19,0,0,1,3.77-1.65h0l1.3,1.65h0a28.31,28.31,0,0,0-4.44,3.12h0A33.09,33.09,0,0,0,388,52.94h0a27.5,27.5,0,0,0-3.26,5h0a12.68,12.68,0,0,0-1.42,5.13h0a4.81,4.81,0,0,0,1.11,3.56h0a5.36,5.36,0,0,0,3.7,1.49h0a11.71,11.71,0,0,0,3.82-.35h0a16.08,16.08,0,0,0,3.67-1.44h0A18.64,18.64,0,0,0,399,64h0a28.14,28.14,0,0,0,3-3h0a8.5,8.5,0,0,1-2.16-1.86h0a11.3,11.3,0,0,1-1.57-2.51h0a13.48,13.48,0,0,1-.95-2.94h0a16,16,0,0,1-.31-3.17h0a9.65,9.65,0,0,1,.45-3h0a7.76,7.76,0,0,1,1.23-2.38h0a5.27,5.27,0,0,1,1.83-1.52h0a4.06,4.06,0,0,1,2.28-.38h0a4.13,4.13,0,0,1,2,.74h0a5.53,5.53,0,0,1,1.52,1.63h0a8.59,8.59,0,0,1,1,2.32h0a12.51,12.51,0,0,1,.4,2.78h0a15.63,15.63,0,0,1-.14,2.39h0a18.14,18.14,0,0,1-.52,2.58h0a20.31,20.31,0,0,1-.88,2.52h0A10.75,10.75,0,0,1,405,60.4Z"></path>
+        <path id="O-2" data-name="O" d="M399.2,50.76h0a14.2,14.2,0,0,0,.23,2.31h0a12.57,12.57,0,0,0,.68,2.47h0a11.23,11.23,0,0,0,1.19,2.28h0a6.21,6.21,0,0,0,1.78,1.76h0a14.87,14.87,0,0,0,1.23-2.46h0a22.33,22.33,0,0,0,.81-2.48h0a14.7,14.7,0,0,0,.44-2.26h0a14.41,14.41,0,0,0,.1-1.87h0a9.8,9.8,0,0,0-.25-2h0a7.58,7.58,0,0,0-.58-1.65h0a3.59,3.59,0,0,0-.87-1.15h0a2,2,0,0,0-1.12-.51h0a2.33,2.33,0,0,0-1.48.34h0a3.64,3.64,0,0,0-1.17,1.2h0a6.2,6.2,0,0,0-.73,1.83h0A8.89,8.89,0,0,0,399.2,50.76Z"></path>
+        <path id="L3-1" data-name="L3" d="M437.8,22.24h0a4.72,4.72,0,0,1,2.24,1h0a3.36,3.36,0,0,1,1.1,2.4h0a8.45,8.45,0,0,1-.22,2.6h0a22.35,22.35,0,0,1-1,3.18h0A37.15,37.15,0,0,1,438.41,35h0c-.61,1.23-1.28,2.44-2,3.65h0c-.74,1.2-1.51,2.36-2.34,3.49h0c-.83,1.12-1.67,2.14-2.51,3.08h0c-1.68,1.88-3.17,3.47-4.44,4.76h0c-1.26,1.29-2.37,2.38-3.31,3.28h0c-.95.89-1.75,1.62-2.4,2.17h0c-.66.55-1.25,1-1.76,1.41h0c-.51.39-1,.74-1.43,1.06h0c-.44.31-.89.67-1.36,1.07h0a10,10,0,0,0-.17,2.6h0c.05.84.1,1.61.13,2.31h0a8.64,8.64,0,0,0,1.4,4.81h0a4.84,4.84,0,0,0,3.36,2h0a6.3,6.3,0,0,0,2.79-.23h0a11.63,11.63,0,0,0,2.7-1.23h0a16.65,16.65,0,0,0,2.52-1.9h0c.79-.73,1.54-1.47,2.23-2.24h0c.69-.77,1.31-1.52,1.85-2.25h0l1.41-1.91h0l1.54,1.27h0c-.07.09-.29.43-.67,1h0c-.38.6-.89,1.31-1.52,2.15h0a28.63,28.63,0,0,1-2.32,2.63h0a19.63,19.63,0,0,1-3,2.49h0a14.21,14.21,0,0,1-3.55,1.72h0a8.71,8.71,0,0,1-3.94.33h0a11.59,11.59,0,0,1-3.31-1h0a9.55,9.55,0,0,1-2.85-2.12h0A11.2,11.2,0,0,1,413.38,66h0a13.5,13.5,0,0,1-.91-4.62h0a28.34,28.34,0,0,1,.6-6.83h0a47,47,0,0,1,2-7h0a58.63,58.63,0,0,1,3.06-6.83h0a68.27,68.27,0,0,1,3.72-6.25h0A50.08,50.08,0,0,1,426,29.15h0a33.72,33.72,0,0,1,4.19-4h0a16.2,16.2,0,0,1,4-2.41h0A6.77,6.77,0,0,1,437.8,22.24Z"></path>
+        <path id="L3-2" data-name="L3" d="M417.42,55.76h0c2.18-1.84,4.24-3.72,6.2-5.63h0c1.95-1.92,3.73-3.82,5.37-5.71h0c1.63-1.9,3.09-3.74,4.4-5.54h0a45.06,45.06,0,0,0,3.27-5.15h0a27.42,27.42,0,0,0,2-4.51h0a9.31,9.31,0,0,0,.51-3.66h0a2.18,2.18,0,0,0-.37-.83h0a1.22,1.22,0,0,0-.76-.61h0a4.37,4.37,0,0,0-2.94,1h0a21.08,21.08,0,0,0-3.8,3.36h0a53.11,53.11,0,0,0-4.19,5.26h0A62.86,62.86,0,0,0,423,40.37h0a67.56,67.56,0,0,0-3.42,7.57h0A41,41,0,0,0,417.42,55.76Z"></path>
+        <path id="K-1" data-name="K" d="M444,52.58c-1.61,4-2.42,5.93-4.09,9.86h0a48.09,48.09,0,0,1,3.83-4.34h0a30.62,30.62,0,0,1,4.14-3.52h0a16.06,16.06,0,0,1,4.31-2.18h0a8.8,8.8,0,0,1,4.4-.26h0a6.67,6.67,0,0,1,2.26.86h0a5.79,5.79,0,0,1,1.48,1.32h0a5.37,5.37,0,0,1,.86,1.57h0a7.11,7.11,0,0,1,.36,1.61h0a6.82,6.82,0,0,1-.19,2.31h0a7.67,7.67,0,0,1-1.06,2.34h0a8.19,8.19,0,0,1-2,2.05h0a10.16,10.16,0,0,1-3,1.51h0a6.73,6.73,0,0,1,.65,2.4h0a6.14,6.14,0,0,1-.05,1.66h0c-.1.55-.2,1.08-.33,1.61h0c-.12.52-.22,1.06-.32,1.6h0a6.33,6.33,0,0,0-.05,1.69h0a5.8,5.8,0,0,0,.14.85h0a2.74,2.74,0,0,0,.3.78h0a2,2,0,0,0,.59.63h0a2.74,2.74,0,0,0,1,.4h0a2.81,2.81,0,0,0,1.68-.25h0a9.37,9.37,0,0,0,1.91-1.17h0a17.26,17.26,0,0,0,2-1.82h0c.67-.71,1.32-1.47,1.94-2.27h0c.62-.8,1.22-1.61,1.8-2.41h0c.57-.8,1.09-1.56,1.55-2.28h0l1.46,1.33h0q-1.61,2.39-3.15,4.54h0a25.61,25.61,0,0,1-3.16,3.67h0a11.61,11.61,0,0,1-3.39,2.26h0a6.32,6.32,0,0,1-3.79.34h0a8.43,8.43,0,0,1-1.69-.54h0a6.81,6.81,0,0,1-1.64-1h0a5.8,5.8,0,0,1-1.31-1.51h0a4.82,4.82,0,0,1-.66-2h0a7.92,7.92,0,0,1,.41-3.11h0a25.07,25.07,0,0,0,.67-2.77h0a9.38,9.38,0,0,0,.15-1.93h0q-.79,0-1.68,0h0a10.31,10.31,0,0,1-1.7-.17h0a6.05,6.05,0,0,1-.93-.26h0a4.82,4.82,0,0,1-1-.49h0a3.23,3.23,0,0,1-.77-.7h0a1.65,1.65,0,0,1-.38-.95h0a1.32,1.32,0,0,1,.27-1h0a2.23,2.23,0,0,1,.92-.7h0a4.3,4.3,0,0,1,1.46-.33h0a8,8,0,0,1,1.94.15h0a7.33,7.33,0,0,1,3.5,1.68h0a7,7,0,0,0,2-1.8h0a8.31,8.31,0,0,0,1.14-2.09h0a9,9,0,0,0,.48-1.92h0a7.05,7.05,0,0,0,0-1.31h0a3.09,3.09,0,0,0-.62-1.77h0a2,2,0,0,0-1.14-.68h0a5.11,5.11,0,0,0-2.64.24h0A12.68,12.68,0,0,0,450,55.77h0a27.23,27.23,0,0,0-3,2.44h0q-1.54,1.42-3,3h0q-1.46,1.62-2.84,3.29h0c-.91,1.12-1.75,2.18-2.52,3.17h0c-.69,1.08-1.3,2.09-1.84,3h0c-.54.94-1,1.74-1.36,2.42h0c-.36.68-.66,1.19-.87,1.53h0c-.21.35-.33.46-.37.33h0c-1.63-.63-2.45-1-4.1-1.57h0c2.73-6,5.35-12,7.92-18.1h0c2.56-6.08,5.18-12.21,7.9-18.32h0c.41-.88.88-1.85,1.41-2.89h0c.52-1,1.1-2.06,1.73-3.08h0a30.88,30.88,0,0,1,2-2.91h0a15,15,0,0,1,2.31-2.38h0a8.36,8.36,0,0,1,2.54-1.45h0a5.15,5.15,0,0,1,2.73-.17h0a4.89,4.89,0,0,1,2.5,1.29h0a4.26,4.26,0,0,1,1.18,2.74h0a14.1,14.1,0,0,1-.77,5.57h0a26,26,0,0,1-3.25,6.53h0a36.12,36.12,0,0,1-5.8,6.59h0A37,37,0,0,1,444,52.58Z"></path>
+        <path id="K-2" data-name="K" d="M445.3,49.34h0a36.59,36.59,0,0,0,7.22-5.65h0a33.53,33.53,0,0,0,4.74-6h0a22.05,22.05,0,0,0,2.51-5.6h0a12.86,12.86,0,0,0,.52-4.58h0a1.56,1.56,0,0,0-.39-.93h0a1.7,1.7,0,0,0-1-.53h0a3.33,3.33,0,0,0-2.75.74h0a13.09,13.09,0,0,0-2.9,3.72h0a65.68,65.68,0,0,0-3.46,7.3h0C448.53,40.91,447,44.74,445.3,49.34Z"></path>
+        <path id="K-3" data-name="K" d="M451.6,64.65h0a2.7,2.7,0,0,0-.7-.84h0a2.18,2.18,0,0,0-1-.5h0a3.8,3.8,0,0,0-1.92.07h0c-.54.19-.79.42-.77.69h0a.58.58,0,0,0,.41.46h0a4.07,4.07,0,0,0,.68.22h0a7.39,7.39,0,0,0,1.83.12h0A9.87,9.87,0,0,0,451.6,64.65Z"></path>
+        <path id="S2" data-name="S2" d="M478.54,54.58h0a3.73,3.73,0,0,1-.42.61h0a4.44,4.44,0,0,0-.5.75h0a4.27,4.27,0,0,0-.39,1.05h0a5,5,0,0,0-.07,1.54h0a9.67,9.67,0,0,0,.56,2.19h0c.33.94.68,2,1.06,3.23h0c.39,1.2.76,2.51,1.11,3.9h0a24.3,24.3,0,0,1,.7,4.22h0a15.37,15.37,0,0,1-.38,5.3h0a9.13,9.13,0,0,1-1.82,3.56h0a14,14,0,0,0,5-3.15h0a30.81,30.81,0,0,0,4.81-6h0l1.25,1.39h0a37.82,37.82,0,0,1-3.08,4.31h0A19.82,19.82,0,0,1,482.56,81h0a13.83,13.83,0,0,1-4.64,2.14h0a11.83,11.83,0,0,1-5.55,0h0a10.85,10.85,0,0,1-4.73-2.3h0a8.35,8.35,0,0,1-2.72-4.38h0l1.3,0h0a3.05,3.05,0,0,0,.28.76h0a4.71,4.71,0,0,0,.74,1.1h0a6.45,6.45,0,0,0,1.27,1.1h0a5.5,5.5,0,0,0,1.88.76h0a4.24,4.24,0,0,0,2.5-.1h0a4.27,4.27,0,0,0,1.78-1.34h0a7.38,7.38,0,0,0,1.18-2.19h0a14.4,14.4,0,0,0,.66-2.7h0a21.16,21.16,0,0,0,.23-2.83h0c0-.93,0-1.79-.07-2.58h0c-.07-.78-.17-1.66-.32-2.63h0c-.14-1-.28-1.9-.43-2.79h0c-.15-.89-.28-1.67-.4-2.33h0c-.11-.67-.18-1.1-.2-1.3h0v-.07h0a7.29,7.29,0,0,0-1,1.26h0c-.39.56-.79,1.18-1.22,1.85h0q-.66,1-1.29,2.07h0c-.43.7-.82,1.34-1.16,1.91h0l-.84,1.42h0a6,6,0,0,0-.32.6h0l-1.42-1.32h0s.28-.48.77-1.38h0c.49-.91,1.15-2,2-3.42h0c.83-1.38,1.77-2.89,2.83-4.55h0Q475.22,55.31,477,53h0C477.6,53.64,477.91,54,478.54,54.58Z"></path>
+        <path id="EX-1" data-name="EX" d="M521,41.5a244.32,244.32,0,0,0-24.5,37l-1.47-1a282.84,282.84,0,0,1,21.24-39.14C518.17,39.61,519.12,40.24,521,41.5Z"></path>
+        <path id="EX-2" data-name="EX" d="M495.4,84.67h0a2.05,2.05,0,0,1-.64,1.69h0a1.78,1.78,0,0,1-1.69.35h0a3.17,3.17,0,0,1-1.7-1.2h0a3.5,3.5,0,0,1-.81-2h0a1.94,1.94,0,0,1,.63-1.66h0a1.74,1.74,0,0,1,1.66-.36h0a3.22,3.22,0,0,1,1.78,1.22h0A3.38,3.38,0,0,1,495.4,84.67Z"></path>
+        <path id="Q4" data-name="Q4" d="M552.39,49.89a113.33,113.33,0,0,0-13.47,10L537,59.33a123.06,123.06,0,0,1,9.73-11Z"></path>
+        <path id="Q5" data-name="Q5" d="M542.21,47.11A111,111,0,0,0,530,57.43l-1.87-.51a127.18,127.18,0,0,1,8.56-11.3Z"></path>
+      </g>
+    </svg>
+  </div>
+  <aside class="notes">
+    <small>
+      https://codepen.io/akhil_001/pen/pxBzyZ
+      <br>
+      https://codepen.io/MatheusAvellar/pen/vKXwjy
+    </small>
+  </aside>
+</section>
+
+  <section data-transition="convex">
+  <figure pixu="">
+    <picture>
+      <source srcset="pixu.ea6d4c65.webp" type="image/webp">
+      <img src="pixu.06482de6.jpg" alt="Pixu">
+    </picture>
+  </figure>
+  <h2>Grazie ❤️!</h2>
+</section>
+
+</section>
+
+<script async="" src="https://public.codepenassets.com/embed/index.js"></script>
+
+      </div>
+      <a brand="" href="https://www.devdojo.it" target="_blank" rel="noopener noreferrer">
+  <figure>
+    <img src="dev-dojo.3f2f430c.png" alt="Dev Dojo IT Logo">
+  </figure>
+</a>
+
+    </main>
+    <script src="modern-css-architecture.06ff1c93.js" type="module"></script>
+  
+
+</body></html>

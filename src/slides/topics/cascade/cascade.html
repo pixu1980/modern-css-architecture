@@ -1,0 +1,98 @@
+<section cascade>
+  <section>
+    <h2>The <mark>"C"</mark> in CSS</h2>
+  </section>
+  <section>
+    <blockquote>
+      The <mark>Cascade</mark> is an <mark>algorithm</mark>
+      that defines how user agents combine property values originating from different sources.
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade" target="_blank" rel="noopener noreferrer">MDN</a>
+    </blockquote>
+  </section>
+  <section>
+    <h3>
+      What are the <mark>players</mark> involved<br />
+      in the algorithm?
+    </h3>
+    <ul>
+      <li class="fragment">user-agent stylesheets</li>
+      <li class="fragment">user stylesheets</li>
+      <li class="fragment">author stylesheets <span class="fragment">(+ inline styles)</span></li>
+    </ul>
+  </section>
+  <section>
+    <h3>How the cascade algorithm handles the <mark>precedence of declarations</mark>?</h3>
+    <ol>
+      <li class="fragment">user-agent declarations</li>
+      <li class="fragment">user declarations</li>
+      <li class="fragment">author and inline declarations</li>
+      <li class="fragment">@keyframe animations</li>
+      <li class="fragment">!important 😞 author and inline declarations</li>
+      <li class="fragment">!important 😢 user declarations</li>
+      <li class="fragment">!important 😭 user-agent declarations</li>
+      <li class="fragment">transitions</li>
+    </ol>
+  </section>
+  <section>
+    <h3>
+      How the @layer <br />
+      <mark>integrates into this</mark>?
+    </h3>
+    <ol>
+      <li class="fragment">@layer 1 declarations</li>
+      <li class="fragment">@layer ... declarations</li>
+      <li class="fragment">@layer N declarations</li>
+      <li class="fragment">un-layered declarations</li>
+      <li class="fragment">inline declarations</li>
+    </ol>
+  </section>
+  <section>
+    <h3>
+      What about <br />
+      <mark>@layer</mark> and <mark>!important</mark>?
+    </h3>
+    <ol>
+      <li class="fragment">!important 😟 un-layered declarations</li>
+      <li class="fragment">!important 😞 @layer N declarations</li>
+      <li class="fragment">!important 😖 @layer ... declarations</li>
+      <li class="fragment">!important 😫 @layer 1 declarations</li>
+      <li class="fragment">!important 😢 inline declarations</li>
+    </ol>
+  </section>
+  <section>
+    <h3>So in the end...</h3>
+  </section>
+  <section>
+    <h4>Order of <mark>precedence</mark> (lower to higher priority)</h4>
+    <small>
+      <ol>
+        <li class="fragment">user-agent declarations</li>
+        <li class="fragment">user declarations</li>
+        <li class="fragment">
+          author declarations
+          <ol>
+            <li class="fragment">@layer 1 declarations</li>
+            <li class="fragment">@layer ... declarations</li>
+            <li class="fragment">@layer N declarations</li>
+            <li class="fragment">un-layered declarations</li>
+            <li class="fragment">inline declarations</li>
+          </ol>
+        </li>
+        <li class="fragment">@keyframe animations</li>
+        <li class="fragment">
+          !important 😟 author and inline declarations
+          <ol>
+            <li class="fragment">!important 😞 un-layered declarations</li>
+            <li class="fragment">!important 😖 @layer N declarations</li>
+            <li class="fragment">!important 😫 @layer ... declarations</li>
+            <li class="fragment">!important 😢 @layer 1 declarations</li>
+            <li class="fragment">!important 😭 inline declarations</li>
+          </ol>
+        </li>
+        <li class="fragment">!important 😡 user declarations</li>
+        <li class="fragment">!important 🤬 user-agent declarations</li>
+        <li class="fragment">transitions</li>
+      </ol>
+    </small>
+  </section>
+</section>

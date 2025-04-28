@@ -1,0 +1,64 @@
+<section>
+  <!-- Slide 1: Section Title -->
+  <section>
+    <h2>Typography, Spacing, & Layout Grid</h2>
+    <p><strong>Time: 18–23 minutes</strong></p>
+  </section>
+  
+  <!-- Slide 2: Design Tokens for Typography & Spacing -->
+  <section>
+    <h3>Design Tokens</h3>
+    <ul>
+      <li><code>--font-size-heading</code> for headings</li>
+      <li><code>--space-xs</code> for small spacing</li>
+      <li><code>--radius-sm</code> for small border radii</li>
+    </ul>
+    <p>These tokens ensure consistency across your design system.</p>
+  </section>
+  
+  <!-- Slide 3: Responsive Design with clamp() & Logical Properties -->
+  <section>
+    <h3>Responsive Design Techniques</h3>
+    <ul>
+      <li>Use <code>clamp()</code> for fluid typography and spacing.</li>
+      <li>Employ logical properties for better internationalization and flow.</li>
+      <li>Combine tokens with modern CSS functions for a scalable layout.</li>
+    </ul>
+  </section>
+  
+  <!-- Slide 4: Component Card Showcase -->
+  <section>
+    <h3>Component Card Showcase</h3>
+    <pre><code>
+:root {
+--font-size-heading: clamp(1.5rem, 2vw, 2.5rem);
+--space-xs: 8px;
+--radius-sm: 4px;
+/* Additional tokens... */
+}
+
+.card {
+font-size: var(--font-size-heading);
+padding: var(--space-xs);
+border-radius: var(--radius-sm);
+border: 1px solid #ccc;
+display: grid;
+grid-template-columns: 1fr;
+gap: var(--space-xs);
+}
+    </code></pre>
+    <p>This small component card uses tokens to control typography, spacing, and layout, ensuring scalability and consistency.</p>
+  </section>
+  
+  <!-- Slide 5: The Beauty of a Scalable Layout -->
+  <section>
+    <h3>Scalable Layout with Tokens</h3>
+    <p>By relying solely on tokens, you build a system that is:</p>
+    <ul>
+      <li>Consistent</li>
+      <li>Adaptable</li>
+      <li>Responsive</li>
+    </ul>
+    <p>Simple changes in token values ripple through the entire design seamlessly.</p>
+  </section>
+</section>

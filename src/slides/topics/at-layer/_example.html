@@ -1,0 +1,31 @@
+
+<section>
+  <h4>CSS Layers Example</h4>
+  <pre>
+    <code class="hljs scss" data-trim data-line-numbers="|3-8|10-14|16-24|1">
+@layer reset, layout, components;
+
+@layer reset {
+  * {
+    box-sizing: border-box;
+    ...
+  }
+}
+
+@layer components {
+  button {
+    border-size: 1px solid lightgray;
+  }
+}
+
+@layer layout {
+  body {
+    display: grid;
+    grid-template-areas:
+      'header header'
+      'aside main'
+      'footer footer';
+  }
+}
+  </code></pre>
+</section>

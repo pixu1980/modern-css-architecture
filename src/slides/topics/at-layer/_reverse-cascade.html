@@ -1,0 +1,52 @@
+<section>
+  <h3>Reverse Cascade</h3>
+</section>
+<section>
+  <h4>Which <mark>--ui--font--size</mark> wins?</h4>
+  <pre>
+    <code class="hljs scss" data-trim data-line-numbers="|11-13|6-8|1-3">
+:root {
+  --ui--font-size: 10px;
+}
+    
+@layer ui {
+  :root {
+    --ui--font-size: 16px;
+  }
+
+  @layer button {
+    :root {
+      --ui--font-size: 18px;
+    }
+
+    button {
+      font-size: var(--ui--font-size);
+    }
+  }
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <img src="./assets/reverse-cascade.gif" style="width: 33vw; min-width: 30rem" />
+  <br />
+  <h3>
+    Look at me Ma'...<br />
+    I'm <mark>reversing waterfalls</mark>
+  </h3>
+</section>
+<section>
+  <h3>
+    So CSS layers are actually<br />
+    <mark>"breaking"</mark> the cascade?
+  </h3>
+</section>
+<section>
+  <h3>
+    Absolutely <mark>not</mark>!<br />
+    <span class="fragment">
+      They're actually <mark>flowing</mark><br />
+      with the cascade.
+    </span>
+  </h3>
+</section>

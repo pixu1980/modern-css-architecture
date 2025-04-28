@@ -1,0 +1,207 @@
+<section>
+  <h2><mark>Protons</mark></h2>
+  <h3>Colors, Focus and Shadows</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Protons as the <mark>personality traits</mark> particles.</blockquote>
+</section>
+<section>
+  <p>Protons define the <mark>visual essence of a design</mark> giving character, tone, elevation and layering. These choices <mark>impact the overall look</mark> of a digital product.</p>
+</section>
+<section>
+  <h2>Come to the <mark>light-dark()</mark> side!</h2>
+  <p>
+    <img src="./assets/yoda.gif" width="700" />
+  </p>
+</section>
+<section>
+  <p><mark>light-dark()</mark></p>
+  <pre>
+    <code class="hljs html" data-trim data-line-numbers>
+      &lt;meta name="color-scheme" content="light dark" /&gt;
+      <!-- &lt;meta name="color-scheme" content="light" /&gt; forcing light color scheme -->
+      <!-- &lt;meta name="color-scheme" content="dark" /&gt; forcing light color scheme -->
+    </code>
+  </pre>
+  <pre>
+    <code class="hljs css" data-trim data-line-numbers="|2|7-9">
+      :root {
+        color-scheme: light dark;
+        /* color-scheme: light; */ /* forcing light color scheme */
+        /* color-scheme: dark; */ /* forcing dark color scheme */
+      }
+      
+      body {
+        color: light-dark(#fefefe, #202020);
+      }
+    </code>
+  </pre>
+</section>
+<section>
+  <h2>color-scheme and light-dark()</h2>
+  <p>
+    <mark>@layer</mark>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
+  </p>
+  <p class="fragment">
+    Fully supported across browsers<br />
+    since <mark>May 2024</mark>
+  </p>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Colors</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|5-7|9-20|22-31|33-41|45-59">
+@layer design-system {
+  ...
+
+  @layer protons {
+    :root {
+      /* here goes the protons common variables */    
+    }
+    
+    @layer colors {
+      :root {
+        /* neutral colors - same in light and dark modes */
+        --ds--c--n-100: hsl(248, 28%, 84%);
+        --ds--c--n-200: hsl(248, 28%, 78%);
+        --ds--c--n-300: hsl(248, 28%, 70%);
+        --ds--c--n-400: hsl(248, 28%, 58%);
+        --ds--c--n-500: hsl(248, 28%, 48%);
+        --ds--c--n-600: hsl(248, 70%, 30%);
+        --ds--c--n-700: hsl(248, 70%, 22%);
+        --ds--c--n-800: hsl(248, 70%, 14%);
+        --ds--c--n-900: hsl(248, 70%, 8%);
+      
+        /* blue */
+        --ds--c--b-100: light-dark(
+          hsl(245, 94%, 98%), 
+          hsl(245, 73%, 98%)
+        );
+        
+        --ds--c--b-200: light-dark(
+          hsl(245, 94%, 94%), 
+          hsl(245, 73%, 94%)
+        );
+        
+        --ds--c--b-300: light-dark(
+          hsl(245, 94%, 84%), 
+          hsl(245, 73%, 84%)
+        );
+        
+        --ds--c--b-400: light-dark(
+          hsl(245, 94%, 74%), 
+          hsl(245, 73%, 74%)
+        );
+        
+        ...
+        
+        /* high contrast preference */
+        @media (prefers-contrast: more) {
+          :root {
+            /* redefine here color variables
+              for the high contrast */
+          }
+        }
+
+        /* low contrast preference */
+        @media (prefers-contrast: less) {
+          :root {
+            /* redefine here color variables
+              for the low contrast */
+          }
+        }
+      }
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Focus</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|8-14|16-20">
+@layer design-system {
+  ...
+
+  @layer protons {
+    ...
+    
+    @layer focus {
+      :root {
+        --ds--f--size: 3px;
+        --ds--f--style: solid;
+        --ds--f--color: var(--ds--c--n-400);
+        --ds--f--offset: var(--ds--f--size);
+        --ds--f--radius: var(--ds--r--xxs);
+      }
+      
+      :focus-visible {
+        outline: var(--ds--f--size) var(--ds--f--style) var(--ds--f--color);
+        outline-offset: var(--ds--f--offset);
+        border-radius: var(--ds--f--radius);
+      }
+      
+      ...
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <h4><mark>Protons</mark>: Shadows</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|9-18|20-29|33-38">
+@layer design-system {
+  ...
+
+  @layer protons {
+    ...
+
+    @layer elevations {
+      :root {
+        /* basic shadow colors */
+        --ds--e--shadow-color-1: light-dark(
+          var(--ds--c--n-100), 
+          var(--ds--c--n-500)
+        );
+        
+        --ds--e--shadow-color-2: light-dark(
+          var(--ds--c--n-500),
+          var(--ds--c--n-900)
+        );
+
+        /* xxs, usually for user input elements
+          (inputs, selects, textareas, ...) */
+        --ds--e--100: 
+          0 0 3px -1px var(--ds--e--shadow-color-1);
+
+        /* xs, usually for elements closest to the application 
+          background, for example cards */
+        --ds--e-200: 
+          0 0 5px 2px var(--ds--e--shadow-color-1),
+          0 0 5px -2px var(--ds--e--shadow-color-2);
+          
+        ...
+          
+        /* xl, usually for elements highest in the stacking order,
+          for example notifications and toasts,
+          which should be above all other content */
+        --ds--e-600: 
+          0 4px 24px -3px var(--ds--e--shadow-color-1),
+          0 18px 64px -8px var(--ds--e--shadow-color-2);
+      }
+    }
+
+    ...
+  } 
+}
+    </code>
+  </pre>
+</section>

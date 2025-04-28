@@ -1,0 +1,59 @@
+<section>
+  <h2><mark>Atoms</mark></h2>
+  <h3>The Building Blocks</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Atoms as the <mark>smallest working unit</mark> defining their <mark>role</mark>, <mark>function</mark> and <mark>appearance</mark>.</blockquote>
+</section>
+<section>
+  <p>Each atom represents a <mark>foundational standalone component</mark>, for example: a button, an input field or a label. Carrying <mark>unique properties and behaviors</mark>.</p>
+</section>
+<section>
+  <p>And most importantly <mark>they can't be broken down</mark> without losing meaning or purpose.</p>
+</section>
+<section>
+  <h4><mark>Atoms</mark>: The Building Blocks</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|9-24|27-33">
+@layer design-system {
+  ...
+  
+  @layer atoms {
+    :root {
+      /* common components variables */
+    }
+    
+    @layer button { 
+      :root {
+        --ds--c-btn--padding-inline: var(--ds--s--md);
+        --ds--c-btn--border-size: 1px;
+        --ds--c-btn--border-style: solid;
+        --ds--c-btn--border-color: var(--ds--c--b-200);
+        --ds--c-btn--border-radius: var(--ds--r--xxs);
+      }
+      
+      button {
+        padding-inline: var(--ds--c-btn--padding-inline);
+        border-size: var(--ds--c-btn--border-size);
+        border-style: var(--ds--c-btn--border-style);
+        border-color: var(--ds--c-btn--border-color);
+        border-radius: var(--ds--c-btn--border-radius);
+      }
+    }
+    
+    @layer input { 
+      /* input component variables and styles */
+    }
+    
+    @layer select {
+      /* select component variables and styles */
+    }
+
+    ...
+  }
+  
+  ...
+} 
+    </code>
+  </pre>
+</section>

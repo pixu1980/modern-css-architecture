@@ -1,0 +1,2 @@
+import '@pixu-talks/core';
+

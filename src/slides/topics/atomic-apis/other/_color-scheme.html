@@ -1,0 +1,69 @@
+<section>
+  <!-- Slide 1: Section Title -->
+  <section>
+    <h2>Dark Mode, Accent Themes, & Motion</h2>
+    <p><strong>Time: 13–18 minutes</strong></p>
+  </section>
+
+  <!-- Slide 2: Dark Mode Strategy -->
+  <section>
+    <h3>Dark Mode Strategy</h3>
+    <ul>
+      <li>Utilize theme tokens to switch styles (e.g., <code>--color-bg-default</code> changes value).</li>
+      <li>Adapt the design to low-light environments seamlessly.</li>
+      <li>Maintain consistency and readability in dark mode.</li>
+    </ul>
+  </section>
+
+  <!-- Slide 3: Accent Themes -->
+  <section>
+    <h3>Accent Themes</h3>
+    <ul>
+      <li>Define accent themes with controlled overrides.</li>
+      <li>Allow targeted customization without affecting the core design system.</li>
+      <li>Enhance branding and visual hierarchy.</li>
+    </ul>
+  </section>
+
+  <!-- Slide 4: Motion Guidelines -->
+  <section>
+    <h3>Motion Guidelines</h3>
+    <ul>
+      <li>Implement subtle transitions and animations for a dynamic feel.</li>
+      <li>Pay special attention to <code>prefers-reduced-motion</code> for accessibility.</li>
+      <li>Balance motion to ensure an inclusive user experience.</li>
+    </ul>
+  </section>
+
+  <!-- Slide 5: Live Switching Example -->
+  <section>
+    <h3>Live Switching Example</h3>
+    <pre><code>
+/* Base Theme */
+:root {
+--color-bg-default: #ffffff;
+--color-text-default: #000000;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+:root {
+--color-bg-default: #000000;
+--color-text-default: #ffffff;
+}
+}
+
+/* Accent Theme Override */
+.accent-theme {
+--color-bg-default: #f0e68c;
+--color-text-default: #333333;
+}
+
+/* Smooth Transition */
+body {
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+      </code></pre>
+    <p>This example shows a live switch from a light theme to dark mode and an accent theme, with a smooth transition for an accessible experience.</p>
+  </section>
+</section>

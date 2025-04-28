@@ -1,0 +1,136 @@
+<section>
+  <h2><mark>Electrons</mark></h2>
+  <h3>Typography and Iconography</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Electrons as the <mark>expressive traits</mark> particles</blockquote>
+</section>
+<section>
+  <p balance>Active and essential, <mark>representing the expressive part</mark> of the design system, <mark>communicating content and meaning</mark></p>
+</section>
+<section>
+  <p balance>Fonts, weights, sizes, and icons work dynamically within layouts, often <mark>adapting across contexts</mark></p>
+</section>
+<section>
+  <h4><mark>Electrons</mark>: Typography and Iconography</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|9-20|22-25|27-38|40-51|53-63|65-75|77-87|89-99|103-106">
+@layer design-system {
+  ...
+
+  @layer electrons {
+    :root {
+      /* here goes the electrons common variables */    
+    }
+    
+    @layer typography {
+      :root {
+        --ds--t--ratio: 1.125; /* major second */
+        --ds--t--font-size--base: 1.6rem;
+        
+        --ds--t--line-height--base: 1.5;
+      
+        --ds--t--font-weight: 400;
+        --ds--t--font-style: normal;
+        --ds--t--letter-spacing: initial;
+        --ds--t--text-decoration: none;
+      }
+      
+      html {
+        /* 
+          16px/10px = 0.625, expressed in em
+          makes the font-size reactive to browser settings
+          and makes 1rem = 10px,
+          allowing to use rems as a simple division base-10 value
+        */
+        font-size: 0.625em;
+      }
+      
+      body {
+        /* resets the base content font-size to 1.6rem = 16px */
+        --ds--t--font-size: var(--ds--t--font-size--base);
+        --ds--t--line-height: var(--ds--t--line-height--base);
+      
+        font-family: var(--ds--t--font-family);
+        font-size: var(--ds--t--font-size);
+        line-height: var(--ds--t--line-height);
+        font-weight: var(--ds--t--font-weight);
+        font-style: var(--ds--t--font-style);
+        letter-spacing: var(--ds--t--letter-spacing);
+        text-decoration: var(--ds--t--text-decoration);
+      
+        :where(*) {
+          --ds--t--font-size: var(--ds--t--font-size--base);
+          --ds--t--line-height: var(--ds--t--line-height--base);
+      
+          font-family: var(--ds--t--font-family);
+          font-size: var(--ds--t--font-size);
+          line-height: var(--ds--t--line-height);
+          font-weight: var(--ds--t--font-weight);
+          font-style: var(--ds--t--font-style);
+          letter-spacing: var(--ds--t--letter-spacing);
+          text-decoration: var(--ds--t--text-decoration);
+        }
+
+        h1 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 6));
+        }
+        
+        h2 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 5));
+        }
+        
+        h3 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 4));
+        }
+        
+        h4 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 3));
+        }
+        
+        h5 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 2));
+        }
+        
+        h6 {
+          --ds--t--font-size: calc(1em * pow(var(--ds--t--ratio), 1));
+        }
+      
+        :where(h1, h2, h3, h4, h5, h6) {
+          --ds--t--font-weight: 700;
+        }
+      
+        :where(h1, h2, h3, h4, h5, h6, p, ul, ol, pre) {
+          margin: 0;
+      
+          + & {
+            margin-block-start: var(--ds--spacings--md);
+          }
+        }
+      
+        li + li {
+          margin-block-start: calc(var(--ds--spacings--md) / 2);
+        }
+      
+        a {
+          --ds--t--text-decoration: underline;
+      
+          &:hover {
+            --ds--t--text-decoration: none;
+          }
+        }
+      }      
+    }
+    
+    @layer iconography { 
+      /* iconography variables and classes, 
+        e.g. icomoon.io/app */
+    }
+
+  } 
+
+  ...
+}
+    </code>
+  </pre>
+</section>

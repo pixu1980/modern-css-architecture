@@ -1,0 +1,95 @@
+<section>
+  <h2>Javascript <mark>interaction</mark></h2>
+  <p>
+    Common js <mark>"CRUD" operations</mark><br />
+    with CSS custom properties
+  </p>
+</section>
+
+<section>
+  <h4>Writing a variable to an element (<mark>C</mark>R<mark>U</mark>D)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-4">
+const button = document.querySelector('button');
+
+// sets the "--text-color" value
+// to the element's CSSStyleDeclaration
+button.style.setProperty('--text-color', '#e74c3c');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Writing a variable to :root (<mark>C</mark>R<mark>U</mark>D)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-4">
+const root = document.documentElement;
+
+// sets the "--text-color" value 
+// to the root element's CSSStyleDeclaration
+root.style.setProperty('--text-color', '#e74c3c');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Reading a variable from an element (C<mark>R</mark>UD)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-6|9-13">
+const button = document.querySelector('button');
+
+// gets the "--text-color" value
+// from element's CSSStyleDeclaration
+//! may be null-ish if the variable 
+//! is not defined on the element itself
+button.style.getPropertyValue('--text-color');  
+
+// gets the "--text-color" value
+// from the element's ComputedStyle, 
+// so with inherited values too
+//! may be null-ish if the variable is not defined on 
+//! the element itself nor any of its ancestors
+getComputedStyle(button).getPropertyValue('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Reading a variable from :root (C<mark>R</mark>UD)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-5">
+const root = document.documentElement;
+
+// gets the "--text-color" value
+// from the root element's ComputedStyle
+//! may be null-ish if the variable is not defined
+getComputedStyle(root).getPropertyValue('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Deleting a variable from an element (CRU<mark>D</mark>)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-4">
+const button = document.querySelector('button');
+
+// deletes the "--text-color" variable
+// from the element's CSSStyleDeclaration
+button.style.removeProperty('--text-color');
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h4>Deleting a variable from :root (CRU<mark>D</mark>)</h4>
+  <pre>
+    <code class="hljs javascript" data-trim data-line-numbers="|3-4">
+const root = document.documentElement;
+
+// deletes the "--text-color" variable
+// from the root element's CSSStyleDeclaration
+root.style.removeProperty('--text-color');
+    </code>
+  </pre>
+</section>

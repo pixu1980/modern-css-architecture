@@ -1,0 +1,74 @@
+<section>
+  <include src="./slides/topics/atomic-apis/_seed.html"></include>
+  <section>
+    <h3>
+      <mark>Extending</mark> and <mark>breaking down</mark> <br />
+      Atomic Design (<a href="https://atomicdesign.bradfrost.com" target="_blank" rel="noopener noreferrer">by Brad Frost</a>)
+    </h3>
+    <p>Its <mark>principles</mark> takes cues from the chemistry itself</p>
+  </section>
+  <section>
+    <figure>
+      <figcaption>A picture is worth a thousand words</figcaption>
+      <picture>
+        <source srcset="./assets/atomic-design-process.jpg?as=webp" type="image/webp" />
+        <img src="./assets/atomic-design-process.jpg" alt="Image showing the Atomic Design process (from atoms, to molecules, to organisms, to templates, to pages)" />
+      </picture>
+    </figure>
+  </section>
+  <section>
+    <h3><mark>Un-packing</mark> Atoms</h3>
+  </section>
+  <include src="./slides/topics/atomic-apis/_neutrons.html"></include>
+  <include src="./slides/topics/atomic-apis/_electrons.html"></include>
+  <include src="./slides/topics/atomic-apis/_protons.html"></include>
+  <include src="./slides/topics/atomic-apis/_atoms.html"></include>
+  <include src="./slides/topics/atomic-apis/_molecules.html"></include>
+  <include src="./slides/topics/atomic-apis/_organisms.html"></include>
+  <section>
+    <h3>
+      <mark>That's It</mark>! Atomic CSS APIs<br />
+      are now <mark>ready to use</mark>...
+    </h3>
+  </section>
+  <section>
+    <h3>...<mark>layered</mark> selectors and values can be easily overridden by <mark>un-layered</mark> ones</h3>
+  </section>
+  <section>
+    <h4>Overriding example</h4>
+    <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|1-9|11-22">
+@layer design-system {
+  ...
+  
+  @layer molecules {
+    ...
+  }
+  
+  ...
+}
+          
+:root {
+  --ds--c--dark: #202020;
+  --ds--c--light: #fefefe;
+
+  --ds--e--shadow-color-1: hsla(210, 3%, 36%, 0.16);
+  --ds--e--shadow-color-2: hsla(213, 5%, 42%, 0.38);
+
+  --ds--t--font-size: 2.2rem;
+  --ds--t--line-height: 1.25;
+  
+  ...
+}
+      </code>
+    </pre>
+  </section>
+  <!-- <include src="./slides/topics/atomic-apis/_templates.html"></include>
+  <include src="./slides/topics/atomic-apis/_pages.html"></include> -->
+  <section>
+    <h4>
+      Let's take a look at the <br />
+      <a href="https://pixu1980.github.io/pix-css/" target="_blank" rel="noopener noreferrer">pixCSS example</a>
+    </h4>
+  </section>
+</section>

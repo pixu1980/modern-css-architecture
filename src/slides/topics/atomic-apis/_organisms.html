@@ -1,0 +1,95 @@
+<section>
+  <h2><mark>Organisms</mark></h2>
+  <h3>Complex, Functional Units</h3>
+</section>
+<section>
+  <blockquote>💡 Think of Organisms as <mark>interface areas with a specific purpose</mark>, converging responsiveness, layout, accessibility, visual language and interactions.</blockquote>
+</section>
+<section>
+  <p>
+    Organisms are are <mark>collections of molecules</mark> (and sometimes atoms) organized to <mark>perform complex and coordinated functions</mark>, structure, behavior (headers, cards, product
+    previews, or nav bars).
+  </p>
+</section>
+<section>
+  <h4><mark>Organisms</mark>: Complex, Functional Units</h4>
+  <pre>
+      <code class="hljs scss" data-trim data-line-numbers="|9-19|21-25|38-43|27-35|45-57|59-67">
+@layer design-system {
+  ...
+
+  @layer organisms {
+    :root {
+      /* here goes the organisms common variables */    
+    }
+    
+    @layer search {
+      /*
+        &lt;label&gt;
+          Search
+          &lt;span field-container&gt;
+            &lt;input type="search" aria-label="Search"
+              placeholder="Type you search query here..." /&gt;
+            &lt;button&gt;🔍&lt;/button&gt;
+          &lt;/span&gt;
+        &lt;/label&gt;
+      */
+      
+      :root {
+        --ds--c-src--direction: column;
+        --ds--c-src--place-content: start;
+        --ds--c-src--place-items: start;
+        --ds--c-src--gap: var(--ds--s--sm);
+
+        --ds--c-src--container--direction: column;
+        --ds--c-src--container--place-content: start;
+        --ds--c-src--container--place-items: start;
+        --ds--c-src--container--gap: var(--ds--s--sm);
+        
+        --ds--c-src--container--border-size: 1px;
+        --ds--c-src--container--border-style: solid;
+        --ds--c-src--container--border-color: var(--ds--c--n-700);
+        --ds--c-src--container--border-radius: var(--ds--r--xxs);
+      }
+      
+      label:has([type="search"]) {
+        display: inline-flex;
+        flex-flow: var(--ds--c-src--direction) nowrap;
+        place-content: var(--ds--c-src--place-content);
+        place-items: var(--ds--c-src--place-items);
+        gap: var(--ds--c-src--gap);
+        
+        [field-container] {
+          display: inline-flex;
+          flex-flow: var(--ds--c-src--container--direction) nowrap;
+          place-content: var(--ds--c-src--container--place-content);
+          place-items: var(--ds--c-src--container--place-items);
+          gap: var(--ds--c-src--container--gap);
+        }
+        
+        :where(input, button) {
+          border-size: var(--ds--c-src--container--border-size);
+          border-style: var(--ds--c-src--container--border-style);
+          border-color: var(--ds--c-src--container--border-color);
+        }
+        
+        input {
+          border-top-left-radius: var(--ds--c-src--container--border-radius);
+          border-bottom-left-radius: var(--ds--c-src--container--border-radius);
+        }
+            
+        button {
+          border-top-right-radius: var(--ds--c-src--container--border-radius);
+          border-bottom-right-radius: var(--ds--c-src--container--border-radius);
+        }
+      }
+    }
+    
+    ...
+  }
+
+  ...
+} 
+    </code>
+  </pre>
+</section>
