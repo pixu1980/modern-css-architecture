@@ -1,57 +1,16 @@
-<section>
+<!-- <section>
   <h2><mark>Protons</mark></h2>
   <h3>Colors, Focus and Shadows</h3>
-</section>
-<section>
   <blockquote>💡 Think of Protons as the <mark>personality traits</mark> particles.</blockquote>
 </section>
 <section>
   <p>Protons define the <mark>visual essence of a design</mark> giving character, tone, elevation and layering. These choices <mark>impact the overall look</mark> of a digital product.</p>
-</section>
+</section> -->
 <section>
-  <h2>Come to the <mark>light-dark()</mark> side!</h2>
-  <p>
-    <img src="./assets/yoda.gif" width="700" />
-  </p>
-</section>
-<section>
-  <p><mark>light-dark()</mark></p>
+  <h4><mark>Protons</mark>: Colors, Focus, Elevations</h4>
   <pre>
-    <code class="hljs html" data-trim data-line-numbers>
-      &lt;meta name="color-scheme" content="light dark" /&gt;
-      <!-- &lt;meta name="color-scheme" content="light" /&gt; forcing light color scheme -->
-      <!-- &lt;meta name="color-scheme" content="dark" /&gt; forcing light color scheme -->
-    </code>
-  </pre>
-  <pre>
-    <code class="hljs css" data-trim data-line-numbers="|2|7-9">
-      :root {
-        color-scheme: light dark;
-        /* color-scheme: light; */ /* forcing light color scheme */
-        /* color-scheme: dark; */ /* forcing dark color scheme */
-      }
-      
-      body {
-        color: light-dark(#fefefe, #202020);
-      }
-    </code>
-  </pre>
-</section>
-<section>
-  <h2>color-scheme and light-dark()</h2>
-  <p>
-    <mark>@layer</mark>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
-  </p>
-  <p class="fragment">
-    Fully supported across browsers<br />
-    since <mark>May 2024</mark>
-  </p>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Colors</h4>
-  <pre>
-      <code class="hljs scss" data-trim data-line-numbers="|5-7|9-20|22-31|33-41|45-59">
+      <!-- <code class="hljs scss" data-trim data-line-numbers="|5-7|9-20|22-31|33-41|45-59"> -->
+      <code class="hljs scss" data-trim data-line-numbers>
 @layer design-system {
   ...
 
@@ -113,22 +72,6 @@
         }
       }
     }
-
-    ...
-  } 
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Focus</h4>
-  <pre>
-      <code class="hljs scss" data-trim data-line-numbers="|8-14|16-20">
-@layer design-system {
-  ...
-
-  @layer protons {
-    ...
     
     @layer focus {
       :root {
@@ -147,22 +90,6 @@
       
       ...
     }
-
-    ...
-  } 
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Shadows</h4>
-  <pre>
-      <code class="hljs scss" data-trim data-line-numbers="|9-18|20-29|33-38">
-@layer design-system {
-  ...
-
-  @layer protons {
-    ...
 
     @layer elevations {
       :root {

@@ -1,27 +1,9 @@
 <section>
   <section>
-    <h2 balance><mark>Attributes</mark> utilities</h2>
-  </section>
-  <section>
-    <h3 balance><mark>Attributes</mark>?? <br /><span class="fragment">instead of Classes??</span></h3>
-  </section>
-  <section>
-    <h3>Modern HTML and CSS gives us the <mark>tools to do this elegantly</mark></h3>
-  </section>
-  <section>
     <h4>A class selector and an attribute selector has exactly the <mark>same specificity</mark></h4>
-    <figure class="fragment">
+    <figure>
       <img src="./assets/specificity.svg" width="900" alt="CSS Specificity explaination" />
     </figure>
-  </section>
-  <section>
-    <h4>Why attribute utilities matters?</h4>
-    <ul>
-      <li class="fragment"><mark>Declarative</mark>, readable, and native to HTML</li>
-      <li class="fragment"><mark>Separate</mark> intent from implementation</li>
-      <li class="fragment"><mark>Reduce</mark> visual noise in markup</li>
-      <li class="fragment"><mark>Consistent</mark>, scalable UI state and theming</li>
-    </ul>
   </section>
   <section>
     <h4 balance>Look... our HTML is <mark> already full </mark> of attributes, at least... <mark class="fragment">it should be!</mark></h4>
@@ -127,9 +109,18 @@
   <section>
     <h4>Better to use <mark>data-*</mark> attributes?</h4>
     <ul>
-      <li class="fragment">Virtually <mark>prevents conflicts</mark> with standard attributes</li>
-      <li class="fragment">Provides a <mark>clear namespace</mark> for custom data</li>
-      <li class="fragment">Accessible via JavaScript through <mark>dataset</mark></li>
+      <li class="fragment">
+        Virtually <mark>prevents conflicts</mark> with <br />
+        "standard" attributes
+      </li>
+      <li class="fragment">
+        Provides a <mark>clear namespace</mark> for <br />
+        custom stuff
+      </li>
+      <li class="fragment">
+        Accessible via JavaScript through <br />
+        the <mark>dataset</mark> API
+      </li>
     </ul>
   </section>
   <section>
@@ -141,7 +132,7 @@
         &lt;/button&gt;
         
         &lt;style&gt;
-          button[color] {
+          button[data-color] {
             --button-color: attr(data-color type(&lt;color&gt;), Canvas);
 
             background-color: var(--button-color);
@@ -164,10 +155,13 @@
   <section>
     <p balance>...unlocking <mark>infinite possibilities</mark> with typed attributes:</p>
     <ul>
-      <li class="fragment"><mark>Content-first</mark> web design</li>
-      <li class="fragment"><mark>Declarative</mark>, readable, scalable</li>
+      <li class="fragment">
+        <mark>DOM based control</mark> <br />
+        (for theming, variants, sizing, visibility)
+      </li>
+      <li class="fragment"><mark>Custom logic</mark> baked into selectors</li>
       <li class="fragment"><mark>No spaghetti</mark> css classes</li>
-      <li class="fragment"><mark>Reduced dependency</mark> on JS frameworks</li>
+      <li class="fragment"><mark>Reduce</mark> visual noise in markup</li>
     </ul>
   </section>
   <section>
@@ -182,7 +176,7 @@
       <li>No runtime JavaScript required</li>
       <li>State expressed declaratively in the DOM</li>
       <li>Custom logic baked into selectors</li>
-      <li>Greater control for theming, variants, sizing, visibility</li>
+      <li>DOM based control for theming, variants, sizing, visibility</li>
     </ul>
     <p><strong>HTML becomes the API. CSS becomes reactive.</strong></p>
   </section> -->
@@ -199,7 +193,9 @@
   <section>
     <h4>Take<mark>away</mark></h4>
     <small>
-      <blockquote>We’re entering an era where HTML attributes will become the <mark>new interface</mark> for UI logic, and CSS will finally treat them as <mark>first-class citizens</mark>.</blockquote>
+      <blockquote>
+        We’re entering an era where HTML attributes will become the <mark>new interface</mark> for UI logic, and CSS will finally treat them as <mark>first-class citizens</mark>.
+      </blockquote>
     </small>
   </section>
   <!-- <section>

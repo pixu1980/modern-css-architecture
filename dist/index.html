@@ -108,31 +108,29 @@
 
 
 <section>
-<section>
+  <section>
   <h2>What are we going to <br><mark>talk about</mark> today?</h2>
 </section>
 <section>
-  <h3><mark>Theory behind</mark> the approach</h3>
+  <h3>Topics</h3>
   <ul>
-    <li class="fragment">CSS Custom Properties</li>
-    <li class="fragment">CSS Layers</li>
-    <li class="fragment">Update the Cascade</li>
+    <li class="fragment"><mark>Lean</mark> Web</li>
+    <li class="fragment"><mark>Semantic</mark> HTML</li>
+    <li class="fragment">The Browser's <mark>hidden Design System</mark></li>
+    <li class="fragment"><mark>classless</mark> CSS</li>
   </ul>
 </section>
 <section>
-  <h3><mark>Atomic Design</mark> Principles</h3>
+  <h3>Modern <mark>CSS</mark></h3>
   <ul>
-    <li class="fragment">
-      Un-packing Atoms <br>
-      (Protons, Electrons and Neutrons)
-    </li>
-    <li class="fragment">Atoms</li>
-    <li class="fragment">Molecules</li>
-    <li class="fragment">Organisms</li>
+    <li class="fragment"><mark>--*</mark> Custom Properties</li>
+    <li class="fragment"><mark>@layer</mark> and <mark>layer()</mark></li>
+    <li class="fragment"><mark>color-scheme</mark> and <mark>light-dark()</mark> function</li>
+    <li class="fragment"><mark>typed</mark> attributes</li>
   </ul>
 </section>
 
-  <section>
+    <section>
     <h3>
       How are we going to feel<br>
       <mark> at the end of the day</mark>?
@@ -144,7 +142,7 @@
     <h3>... I'm <mark>promise</mark> 😄!!!</h3>
   </section>
 
-<section class="slide-dive-in" data-auto-animate="">
+  <section class="slide-dive-in" data-auto-animate="">
   <div sr-only="" data-menu-title="">Let's dive in</div>
   <dive-in>
     <stack-container>
@@ -162,15 +160,13 @@
 <section>
   <section>
     <h3>
-      What we need first it's a <br>
-      <mark>Lean</mark> approach
+      We can't talk about "architecture" <br>
+      without talking about the <mark>Lean Web</mark>
     </h3>
   </section>
   <section>
     <h3>The <mark>rules</mark> of Lean Web</h3>
-  </section>
-  <section>
-    <span>#1 - You do not talk about Lean Web.</span><br>
+    <span class="fragment">#1 - You do not talk about Lean Web.</span><br>
     <span class="fragment">#2 - You do <mark>NOT</mark> talk about Lean Web.</span><br>
     <span class="fragment">#3 - …</span>
   </section>
@@ -181,8 +177,8 @@
   <section>
     <h3>#1 - <mark>Minimalism</mark></h3>
     <p>
-      Minimize the use of <mark>visual and architectural</mark> overhead, always following the paradigm
-      <mark>HTML 1st, CSS 2nd and JS 3rd</mark>
+      Minimize the use of <mark>visual and architectural</mark> overhead, always following the paradigm <br>
+      HTML <mark>1st</mark>, CSS <mark>2nd</mark> and JS <mark>3rd</mark>
     </p>
     <aside class="notes">
       Explain how minimalism in code can simplify development and reduce maintenance time. Quote Brad Frost to highlight how the complexity of modern frameworks can slow down development. Provide a
@@ -249,92 +245,26 @@
       and a necessity for the future of the web
     </p>
   </section>
-  <section>
+  <!-- <section>
     <h3>#5 - Continuous Iteration</h3>
     <p>
-      Improvement is a <mark>never-ending process</mark>: <br>
-      we monitor, gather feedback <br>
-      and continuously optimize to <br>
-      give users the best experience, <br>
+      Improvement is a <mark>never-ending process</mark>: <br />
+      we monitor, gather feedback <br />
+      and continuously optimize to <br />
+      give users the best experience, <br />
       <mark>iteratively</mark> reducing waste and inefficiencies
     </p>
-  </section>
+  </section> -->
 </section>
 
+<!-- <include src="./slides/topics/_we-break-native.html"></include> -->
+<!-- <include src="./slides/topics/_css-resets.html"></include> -->
 <section>
-  <section>
-    <h2>
-      Modern design systems are <mark>stunning</mark>, <mark>sophisticated</mark>, <mark>scalable</mark>... <span class="fragment">and <mark>expensive</mark></span>
-    </h2>
-  </section>
   <section>
     <h3>
-      Modern CSS resets often <br>
-      <mark>discard browser defaults entirely</mark>
+      The Browser’s <mark>Hidden</mark> <br>
+      Design System
     </h3>
-  </section>
-  <section>
-    <h3>
-      Introducing <mark>complexity</mark>, <br>
-      <mark>inconsistency</mark>, and <mark>technical debt</mark>
-    </h3>
-  </section>
-  <section>
-    <p balance="">
-      In some way we waste out efforts <mark>re-building</mark> what's already there, <span class="fragment">just <mark>less consistent</mark>...</span> <span class="fragment">and too often <mark>less accessible</mark></span>
-    </p>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h2 balance=""><mark>Does it makes sense</mark> resetting CSS in <mark>2025</mark>?</h2>
-  </section>
-  <section>
-    <figure>
-      <img src="youre-not-thinking-fourth-dimensionally.7116fd2b.gif" width="550" alt="Doc. Emmet L. Brown saying 'Marty, you are not thinking fourth dimensionally!'">
-    </figure>
-  </section>
-  <section>
-    <h3 balance=""><mark>Why</mark> CSS resets were born?</h3>
-    <ul>
-      <li class="fragment">Early browsers had <mark>inconsistent default styles</mark></li>
-      <li class="fragment">Margins, paddings, font sizes <mark>varied wildly</mark></li>
-      <li class="fragment">Resets ensured a <mark>clean and predictable</mark> baseline</li>
-    </ul>
-  </section>
-  <section>
-    <h3 balance="">What does a <mark>CSS reset</mark>?</h3>
-    <ul>
-      <li class="fragment"><mark>Erase all</mark> default styles</li>
-      <li class="fragment">Force to <mark>re-apply</mark> needed styles</li>
-      <li class="fragment"><mark>Gain control</mark> over layout and spacing</li>
-      <li class="fragment">Ensure <mark>consistent rendering</mark> across browsers</li>
-    </ul>
-  </section>
-  <section>
-    <h3 balance="">What are the <mark>main concerns</mark> with CSS Resets?</h3>
-  </section>
-  <section>
-    <p balance="">Hidden costs of CSS resetting <mark>already working</mark> stuff</p>
-    <small>
-      <ol>
-        <li class="fragment"><mark>Removes or reduces accessibility defaults</mark> for users who rely on keyboards navigation</li>
-        <li class="fragment">Every “zeroed” element <mark>must therefore be redefined</mark>, adding un-useful redundancy</li>
-        <li class="fragment"><mark>Technical and Design debt</mark> at the same time, by adding third party deps which must be overridden</li>
-        <li class="fragment"><mark>Loss of useful defaults</mark> (e.g. system colors, typography, spacings, focus styles, interaction behavior)</li>
-      </ol>
-    </small>
-  </section>
-  <section>
-    <h4>Take<mark>away</mark></h4>
-    <blockquote>CSS resets <mark>were essential</mark> in the past, today we have <mark>better tools</mark>... and <mark>better defaults</mark></blockquote>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h3>Maybe the <mark>leanest, fastest, most accessible</mark> UI kit is already in your browser, it <mark>just needs some style</mark>!</h3>
   </section>
   <section>
     <h3>Semantic HTML is <mark>power</mark></h3>
@@ -351,18 +281,6 @@
       <li class="fragment">User agents are improving <mark>at every release</mark>, and their default styles are <mark>converging over time</mark></li>
       <li class="fragment">Focus indicators and roles come out of the box, <mark>no JS needed</mark> for basic interactions</li>
     </ul>
-  </section>
-  <section>
-    <h3>
-      The Browser’s <mark>Hidden</mark> <br>
-      Design System
-    </h3>
-  </section>
-  <section>
-    <h4>
-      A <mark>crude</mark>, mostly <mark>undocumented</mark>, <br>
-      foundational design system: <span class="fragment">but <mark>real</mark>!</span>
-    </h4>
   </section>
   <section>
     <comparison>
@@ -426,7 +344,8 @@
         <h4 balance="">
           <mark>Type Scale &amp; Spacings</mark>
         </h4>
-        <small balance="">Heading elements from <mark>&lt;h1&gt;</mark> to <mark>&lt;h6&gt;</mark>, paragraphs and all other phrasing elements follow a <mark>visual hierarchy</mark>, spacings reflect an implied scale and rhythm</small>
+        <small balance="">Heading elements from <mark>&lt;h1&gt;</mark> to <mark>&lt;h6&gt;</mark>, paragraphs and all other phrasing elements follow a <mark>visual hierarchy</mark>, spacings reflect an implied
+          scale and rhythm</small>
       </left>
       <right>
         <div typography="">
@@ -534,28 +453,27 @@
 
 <section>
   <section>
-    <h2 balance=""><mark>Attributes</mark> utilities</h2>
+    <h2>A <mark>classless</mark> approach</h2>
   </section>
   <section>
-    <h3 balance=""><mark>Attributes</mark>?? <br><span class="fragment">instead of Classes??</span></h3>
+    <h3>
+      CSS without classes? <br>
+      <mark>What</mark> to use instead?
+    </h3>
   </section>
   <section>
-    <h3>Modern HTML and CSS gives us the <mark>tools to do this elegantly</mark></h3>
+    <h3 balance="">Semantics + <mark>Attribute Utilities</mark></h3>
   </section>
+</section>
+<section>
   <section>
-    <h4>A class selector and an attribute selector has exactly the <mark>same specificity</mark></h4>
-    <figure class="fragment">
+    <h4>
+      class selectors and attribute selectors <br>
+      has the <mark>same specificity</mark>
+    </h4>
+    <figure>
       <img src="specificity.2e8c2d71.svg" width="900" alt="CSS Specificity explaination">
     </figure>
-  </section>
-  <section>
-    <h4>Why attribute utilities matters?</h4>
-    <ul>
-      <li class="fragment"><mark>Declarative</mark>, readable, and native to HTML</li>
-      <li class="fragment"><mark>Separate</mark> intent from implementation</li>
-      <li class="fragment"><mark>Reduce</mark> visual noise in markup</li>
-      <li class="fragment"><mark>Consistent</mark>, scalable UI state and theming</li>
-    </ul>
   </section>
   <section>
     <h4 balance="">Look... our HTML is <mark> already full </mark> of attributes, at least... <mark class="fragment">it should be!</mark></h4>
@@ -656,9 +574,18 @@
   <section>
     <h4>Better to use <mark>data-*</mark> attributes?</h4>
     <ul>
-      <li class="fragment">Virtually <mark>prevents conflicts</mark> with standard attributes</li>
-      <li class="fragment">Provides a <mark>clear namespace</mark> for custom data</li>
-      <li class="fragment">Accessible via JavaScript through <mark>dataset</mark></li>
+      <li class="fragment">
+        Virtually <mark>prevents conflicts</mark> with <br>
+        "standard" attributes
+      </li>
+      <li class="fragment">
+        Provides a <mark>clear namespace</mark> for <br>
+        custom stuff
+      </li>
+      <li class="fragment">
+        Accessible via JavaScript through <br>
+        the <mark>dataset</mark> API
+      </li>
     </ul>
   </section>
   <section>
@@ -669,7 +596,7 @@
         &lt;/button&gt;
         
         &lt;style&gt;
-          button[color] {
+          button[data-color] {
             --button-color: attr(data-color type(&lt;color&gt;), Canvas);
 
             background-color: var(--button-color);
@@ -692,71 +619,28 @@
   <section>
     <p balance="">...unlocking <mark>infinite possibilities</mark> with typed attributes:</p>
     <ul>
-      <li class="fragment"><mark>Content-first</mark> web design</li>
-      <li class="fragment"><mark>Declarative</mark>, readable, scalable</li>
+      <li class="fragment">
+        <mark>DOM based control</mark> <br>
+        (for theming, variants, sizing, visibility)
+      </li>
+      <li class="fragment"><mark>Custom logic</mark> baked into selectors</li>
       <li class="fragment"><mark>No spaghetti</mark> css classes</li>
-      <li class="fragment"><mark>Reduced dependency</mark> on JS frameworks</li>
+      <li class="fragment"><mark>Reduce</mark> visual noise in markup</li>
     </ul>
   </section>
-  <section>
-    <p>
-      No JS. No classes. <br>
-      <mark>Just semantics and style</mark>.
-    </p>
-  </section>
-  <!-- <section>
-    <h4>HTML + CSS: Finally Talking</h4>
-    <ul>
-      <li>No runtime JavaScript required</li>
-      <li>State expressed declaratively in the DOM</li>
-      <li>Custom logic baked into selectors</li>
-      <li>Greater control for theming, variants, sizing, visibility</li>
-    </ul>
-    <p><strong>HTML becomes the API. CSS becomes reactive.</strong></p>
-  </section> -->
-  <!-- <section>
-    <h4>Attribute-First = Future-Ready</h4>
-    <ul>
-      <li>Composes well with modern specs (e.g. container queries, cascade layers)</li>
-      <li>Reduces JS dependencies</li>
-      <li>Enables robust design systems that scale</li>
-      <li>Better debugging, source of truth remains in the markup</li>
-    </ul>
-    <p><em>The future of styling is declarative, expressive, and classless.</em></p>
-  </section> -->
   <section>
     <h4>Take<mark>away</mark></h4>
     <small>
-      <blockquote>We’re entering an era where HTML attributes will become the <mark>new interface</mark> for UI logic, and CSS will finally treat them as <mark>first-class citizens</mark>.</blockquote>
+      <blockquote>
+        We’re entering an era where HTML attributes will become the <mark>new interface</mark> for UI logic, and CSS will finally treat them as <mark>first-class citizens</mark>.
+      </blockquote>
     </small>
   </section>
   <!-- <section>
     <h3>Don't believe me? <a href="./slides/topics/_grid-system-example.html" target="_blank" rel="noopener noreferrer">Try this</a> (with Chrome)</h3>
   </section> -->
 </section>
-
 <section>
-  <section>
-    <h2><mark>classless</mark> CSS</h2>
-  </section>
-  <section>
-    <h3><mark>What is</mark> classless CSS?</h3>
-  </section>
-  <section>
-    <h4 balance="">Less complexity, <mark>more semantics</mark>, no classes, just pure HTML elements and selectors</h4>
-  </section>
-  <section>
-    <h4 balance="">
-      <mark>Leverage browser defaults</mark>
-      instead of override their behavior, style is inferred from semantics
-    </h4>
-  </section>
-  <section>
-    <h4 balance="">Less DOM noise, better scalability, providing accessibility and performance <mark>out of the box</mark></h4>
-  </section>
-  <section>
-    <h4>Use attributes like <mark>helpers and utilities</mark></h4>
-  </section>
   <section>
     <h4>Popular Classless Frameworks</h4>
     <ul>
@@ -778,6 +662,47 @@
 
 <section>
   <section>
+    <h2>Come to the <mark>light-dark()</mark> side!</h2>
+    <p>
+      <img src="yoda.3bbd05d3.gif" width="700">
+    </p>
+  </section>
+  <section>
+    <h2>color-scheme and light-dark()</h2>
+    <p>
+      <mark>@layer</mark>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
+    </p>
+    <p class="fragment">
+      Fully supported across browsers<br>
+      since <mark>May 2024</mark>
+    </p>
+  </section>
+  <section>
+    <p><mark>light-dark()</mark></p>
+    <pre>    <code class="hljs html" data-trim="" data-line-numbers="">
+      &lt;meta name="color-scheme" content="light dark" /&gt;
+      <!-- &lt;meta name="color-scheme" content="light" /&gt; forcing light color scheme -->
+      <!-- &lt;meta name="color-scheme" content="dark" /&gt; forcing light color scheme -->
+    </code>
+  </pre>
+    <pre>    <code class="hljs css" data-trim="" data-line-numbers="">
+      :root {
+        color-scheme: light dark;
+        /* color-scheme: light; */ /* forcing light color scheme */
+        /* color-scheme: dark; */ /* forcing dark color scheme */
+      }
+      
+      body {
+        color: light-dark(#fefefe, #202020);
+      }
+    </code>
+  </pre>
+  </section>
+</section>
+
+<section>
+  <section>
     <h2>CSS Custom Properties</h2>
     <p>
       <mark>--*</mark>
@@ -789,10 +714,9 @@
       since <mark>April 2017</mark>
     </p>
   </section>
-  
-<section>
+  <section>
   <h4><mark>Centralizing</mark> values</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|2,3|7,8">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="">
 :root {
   --text-color: #34eadb;
   --font-size: 16px;
@@ -808,7 +732,7 @@ body {
 
 <section>
   <h4>Flowing with the <mark>cascade</mark></h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|7">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="">
 :root {
   --text-color: #34eadb;
   --font-size: 16px;
@@ -826,17 +750,10 @@ body {
 
 <section>
   <h4><mark>Dynamic</mark> and <mark>Conditional</mark> overrides...</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|6-11">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="">
 :root {
-  --text-color: #202020;
-  --background-color: #efefef;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #efefef;
-    --background-color: #202020;
-  }
+  --text-color: light-dark(#202020, #efefef);
+  --background-color: light-dark(#efefef, #202020);
 }
 
 body {
@@ -849,7 +766,7 @@ body {
 
 <section>
   <h4>...the same goes for <mark>Responsive</mark></h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|5-9">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="">
 :root {
   --padding: 8px;
 }
@@ -867,96 +784,7 @@ body {
   </pre>
 </section>
 
-  <section>
-  <h2>Javascript <mark>interaction</mark></h2>
-  <p>
-    Common js <mark>"CRUD" operations</mark><br>
-    with CSS custom properties
-  </p>
-</section>
-
-<section>
-  <h4>Writing a variable to an element (<mark>C</mark>R<mark>U</mark>D)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
-const button = document.querySelector('button');
-
-// sets the "--text-color" value
-// to the element's CSSStyleDeclaration
-button.style.setProperty('--text-color', '#e74c3c');
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h4>Writing a variable to :root (<mark>C</mark>R<mark>U</mark>D)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
-const root = document.documentElement;
-
-// sets the "--text-color" value 
-// to the root element's CSSStyleDeclaration
-root.style.setProperty('--text-color', '#e74c3c');
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h4>Reading a variable from an element (C<mark>R</mark>UD)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-6|9-13">
-const button = document.querySelector('button');
-
-// gets the "--text-color" value
-// from element's CSSStyleDeclaration
-//! may be null-ish if the variable 
-//! is not defined on the element itself
-button.style.getPropertyValue('--text-color');  
-
-// gets the "--text-color" value
-// from the element's ComputedStyle, 
-// so with inherited values too
-//! may be null-ish if the variable is not defined on 
-//! the element itself nor any of its ancestors
-getComputedStyle(button).getPropertyValue('--text-color');
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h4>Reading a variable from :root (C<mark>R</mark>UD)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-5">
-const root = document.documentElement;
-
-// gets the "--text-color" value
-// from the root element's ComputedStyle
-//! may be null-ish if the variable is not defined
-getComputedStyle(root).getPropertyValue('--text-color');
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h4>Deleting a variable from an element (CRU<mark>D</mark>)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
-const button = document.querySelector('button');
-
-// deletes the "--text-color" variable
-// from the element's CSSStyleDeclaration
-button.style.removeProperty('--text-color');
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h4>Deleting a variable from :root (CRU<mark>D</mark>)</h4>
-  <pre>    <code class="hljs javascript" data-trim="" data-line-numbers="|3-4">
-const root = document.documentElement;
-
-// deletes the "--text-color" variable
-// from the root element's CSSStyleDeclaration
-root.style.removeProperty('--text-color');
-    </code>
-  </pre>
-</section>
-
+  <!-- <include src="./slides/topics/custom-properties/_js.html"></include> -->
 </section>
 
 <section>
@@ -975,7 +803,7 @@ root.style.removeProperty('--text-color');
   
 <section>
   <h4>CSS Layers Example</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|3-8|10-14|16-24|1">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="3-8|10-14|16-24|1">
 @layer reset, layout, components;
 
 @layer reset {
@@ -1005,7 +833,7 @@ root.style.removeProperty('--text-color');
 
   <section>
   <h4>Layers depths levels</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|2-10|3-5|12-20|13-15">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|2-10|12-20">
 @layer ui {
   @layer button {
     :root {
@@ -1051,7 +879,7 @@ root.style.removeProperty('--text-color');
 
 <section>
   <h4>@import ... layer() pattern</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|1|2|3|5-7|9">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="">
 @import 'path-to-old-dependency.css' layer(old);
 @import 'path-to-old-dependency.theme.css' layer(old.theme);
 @import 'path-to-other-old-dependency.css' layer(old.other);
@@ -1070,7 +898,7 @@ root.style.removeProperty('--text-color');
 </section>
 <section>
   <h4>Which <mark>--ui--font--size</mark> wins?</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|11-13|6-8|1-3">
+  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|1-3|6-8|11-13|1-3">
 :root {
   --ui--font-size: 10px;
 }
@@ -1130,9 +958,9 @@ root.style.removeProperty('--text-color');
       <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade" target="_blank" rel="noopener noreferrer">MDN</a>
     </blockquote>
   </section>
-  <section>
+  <!-- <section>
     <h3>
-      What are the <mark>players</mark> involved<br>
+      What are the <mark>players</mark> involved<br />
       in the algorithm?
     </h3>
     <ul>
@@ -1140,7 +968,7 @@ root.style.removeProperty('--text-color');
       <li class="fragment">user stylesheets</li>
       <li class="fragment">author stylesheets <span class="fragment">(+ inline styles)</span></li>
     </ul>
-  </section>
+  </section> -->
   <section>
     <h3>How the cascade algorithm handles the <mark>precedence of declarations</mark>?</h3>
     <ol>
@@ -1305,19 +1133,18 @@ code and design system overrides
   <section>
     <h3><mark>Un-packing</mark> Atoms</h3>
   </section>
-  <section>
+  <!-- <section>
   <h2><mark>Neutrons</mark></h2>
   <h3>Spacing, Radius, Grid System</h3>
-</section>
-<section>
   <blockquote>💡 Think of Neutrons as the <mark>design glue</mark>, giving harmony, rhythm and space.</blockquote>
 </section>
 <section>
   <p>Providing <mark>structure and stability</mark>, neutrons are invisible forces which <mark>hold everything together</mark>: spacing, grid systems, layout rules.</p>
-</section>
+</section> -->
 <section>
   <h4><mark>Neutrons</mark>: Spacing, Radius, Grid System</h4>
-  <pre>    <code class="hljs scss" data-trim="" data-line-numbers="|9-21|23-31|33-40|42-55|57-62|72-76|80-90|92-99|101-116|118-130|134-146">
+  <pre>    <!-- <code class="hljs scss" data-trim data-line-numbers="|9-21|23-31|33-40|42-55|57-62|72-76|80-90|92-99|101-116|118-130|134-146"> -->
+    <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
 
@@ -1475,22 +1302,21 @@ code and design system overrides
   </pre>
 </section>
 
-  <section>
+  <!-- <section>
   <h2><mark>Electrons</mark></h2>
   <h3>Typography and Iconography</h3>
-</section>
-<section>
   <blockquote>💡 Think of Electrons as the <mark>expressive traits</mark> particles</blockquote>
 </section>
 <section>
-  <p balance="">Active and essential, <mark>representing the expressive part</mark> of the design system, <mark>communicating content and meaning</mark></p>
+  <p balance>Active and essential, <mark>representing the expressive part</mark> of the design system, <mark>communicating content and meaning</mark></p>
 </section>
 <section>
-  <p balance="">Fonts, weights, sizes, and icons work dynamically within layouts, often <mark>adapting across contexts</mark></p>
-</section>
+  <p balance>Fonts, weights, sizes, and icons work dynamically within layouts, often <mark>adapting across contexts</mark></p>
+</section> -->
 <section>
   <h4><mark>Electrons</mark>: Typography and Iconography</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-20|22-25|27-38|40-51|53-63|65-75|77-87|89-99|103-106">
+  <pre>      <!-- <code class="hljs scss" data-trim data-line-numbers="|9-20|22-25|27-38|40-51|53-63|65-75|77-87|89-99|103-106"> -->
+      <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
 
@@ -1611,57 +1437,18 @@ code and design system overrides
   </pre>
 </section>
 
-  <section>
+  <!-- <section>
   <h2><mark>Protons</mark></h2>
   <h3>Colors, Focus and Shadows</h3>
-</section>
-<section>
   <blockquote>💡 Think of Protons as the <mark>personality traits</mark> particles.</blockquote>
 </section>
 <section>
   <p>Protons define the <mark>visual essence of a design</mark> giving character, tone, elevation and layering. These choices <mark>impact the overall look</mark> of a digital product.</p>
-</section>
+</section> -->
 <section>
-  <h2>Come to the <mark>light-dark()</mark> side!</h2>
-  <p>
-    <img src="yoda.3bbd05d3.gif" width="700">
-  </p>
-</section>
-<section>
-  <p><mark>light-dark()</mark></p>
-  <pre>    <code class="hljs html" data-trim="" data-line-numbers="">
-      &lt;meta name="color-scheme" content="light dark" /&gt;
-      <!-- &lt;meta name="color-scheme" content="light" /&gt; forcing light color scheme -->
-      <!-- &lt;meta name="color-scheme" content="dark" /&gt; forcing light color scheme -->
-    </code>
-  </pre>
-  <pre>    <code class="hljs css" data-trim="" data-line-numbers="|2|7-9">
-      :root {
-        color-scheme: light dark;
-        /* color-scheme: light; */ /* forcing light color scheme */
-        /* color-scheme: dark; */ /* forcing dark color scheme */
-      }
-      
-      body {
-        color: light-dark(#fefefe, #202020);
-      }
-    </code>
-  </pre>
-</section>
-<section>
-  <h2>color-scheme and light-dark()</h2>
-  <p>
-    <mark>@layer</mark>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank" rel="noopener noreferrer"> (MDN docs) </a>
-  </p>
-  <p class="fragment">
-    Fully supported across browsers<br>
-    since <mark>May 2024</mark>
-  </p>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Colors</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|5-7|9-20|22-31|33-41|45-59">
+  <h4><mark>Protons</mark>: Colors, Focus, Elevations</h4>
+  <pre>      <!-- <code class="hljs scss" data-trim data-line-numbers="|5-7|9-20|22-31|33-41|45-59"> -->
+      <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
 
@@ -1723,21 +1510,6 @@ code and design system overrides
         }
       }
     }
-
-    ...
-  } 
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Focus</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|8-14|16-20">
-@layer design-system {
-  ...
-
-  @layer protons {
-    ...
     
     @layer focus {
       :root {
@@ -1756,21 +1528,6 @@ code and design system overrides
       
       ...
     }
-
-    ...
-  } 
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <h4><mark>Protons</mark>: Shadows</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-18|20-29|33-38">
-@layer design-system {
-  ...
-
-  @layer protons {
-    ...
 
     @layer elevations {
       :root {
@@ -1814,11 +1571,11 @@ code and design system overrides
   </pre>
 </section>
 
-  <section>
+  <!-- <section>
   <h2><mark>Atoms</mark></h2>
   <h3>The Building Blocks</h3>
-</section>
-<section>
+</section> -->
+<!-- <section>
   <blockquote>💡 Think of Atoms as the <mark>smallest working unit</mark> defining their <mark>role</mark>, <mark>function</mark> and <mark>appearance</mark>.</blockquote>
 </section>
 <section>
@@ -1826,10 +1583,11 @@ code and design system overrides
 </section>
 <section>
   <p>And most importantly <mark>they can't be broken down</mark> without losing meaning or purpose.</p>
-</section>
+</section> -->
 <section>
   <h4><mark>Atoms</mark>: The Building Blocks</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-24|27-33">
+  <pre>      <!-- <code class="hljs scss" data-trim data-line-numbers="|9-24|27-33"> -->
+      <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
   
@@ -1873,7 +1631,7 @@ code and design system overrides
   </pre>
 </section>
 
-  <section>
+  <!-- <section>
   <h2><mark>Molecules</mark></h2>
   <h3>Composed but Cohesive</h3>
 </section>
@@ -1885,10 +1643,11 @@ code and design system overrides
     Molecules are formed by atoms <mark>bonded together in a stable configuration</mark>, retaining properties of their atoms and gaining new functionality from the interaction, forming
     <mark>semantic and functional unit</mark> (like a label + input, or an icon + button).
   </p>
-</section>
+</section> -->
 <section>
   <h4><mark>Molecules</mark>: Composed but Cohesive</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-18|20-30|33-39">
+  <pre>      <!-- <code class="hljs scss" data-trim data-line-numbers="|9-18|20-30|33-39"> -->
+      <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
 
@@ -1936,7 +1695,7 @@ code and design system overrides
   </pre>
 </section>
 
-  <section>
+  <!-- <section>
   <h2><mark>Organisms</mark></h2>
   <h3>Complex, Functional Units</h3>
 </section>
@@ -1948,10 +1707,11 @@ code and design system overrides
     Organisms are are <mark>collections of molecules</mark> (and sometimes atoms) organized to <mark>perform complex and coordinated functions</mark>, structure, behavior (headers, cards, product
     previews, or nav bars).
   </p>
-</section>
+</section> -->
 <section>
   <h4><mark>Organisms</mark>: Complex, Functional Units</h4>
-  <pre>      <code class="hljs scss" data-trim="" data-line-numbers="|9-19|21-25|38-43|27-35|45-57|59-67">
+  <pre>      <!-- <code class="hljs scss" data-trim data-line-numbers="|9-19|21-25|38-43|27-35|45-57|59-67"> -->
+      <code class="hljs scss" data-trim="" data-line-numbers="">
 @layer design-system {
   ...
 
@@ -2078,90 +1838,9 @@ code and design system overrides
   </section>
 </section>
 
-<section>
-  <section>
-    <h2>Visual <mark>Integrity Testing</mark></h2>
-    <p>
-      Plan for maintenance from the start <br>
-      to <mark>ensure long-term scalability</mark>.
-    </p>
-  </section>
-  <section>
-    <h3><mark>No-Regression</mark> Testing</h3>
-    <ul>
-      <li class="fragment">Automated <mark>snapshot compare</mark> of UI states, with pixel-by-pixel diffing</li>
-      <li class="fragment"><mark>Detect</mark> unintended <mark>visual changes</mark> over time</li>
-      <li class="fragment"><mark>Highlight visual differences</mark> between versions</li>
-    </ul>
-  </section>
-  <section>
-    <h3><mark>Tooling</mark></h3>
-    <ul>
-      <li class="fragment">
-        <mark>Playwright</mark>, or similar <br>
-        End-to-end testing framework.
-      </li>
-      <li class="fragment">
-        <mark>Storybook + Chromatic/Loki</mark> <br>
-        Component testing with visual review and no-regression testing
-      </li>
-      <li class="fragment">
-        <mark>Percy</mark> <br>
-        Automated visual review platform.
-      </li>
-    </ul>
-  </section>
-  <section>
-    <p>A <mark>well-planned override strategy</mark> improves flexibility and adoption.</p>
-  </section>
-  <section>
-    <h3>Documentation &amp; <mark>Overrides</mark></h3>
-    <ul>
-      <li class="fragment">Allow <mark>customization</mark></li>
-      <li class="fragment">Provide <mark>clear APIs</mark></li>
-      <li class="fragment">Playgrounds with <mark>Storybook</mark> or <mark>Zeroheight</mark></li>
-      <li class="fragment">Show <mark>live examples</mark> in the documentation</li>
-    </ul>
-  </section>
-</section>
+<!-- <include src="./slides/topics/testing/testing.html"></include> -->
 
-
-<section>
-  <section>
-    <h2><mark>Wrap</mark> Up</h2>
-    <h3>
-      Pros and Cons of an <br>
-      <mark>Accessible Design System</mark>
-    </h3>
-  </section>
-  <section>
-    <h3>Pros</h3>
-    <ul>
-      <li class="fragment"><mark>Consistency</mark> and <mark>scalability</mark></li>
-      <li class="fragment">Integrated systemic <mark>accessibility</mark></li>
-      <li class="fragment">Flexibility through <mark>declarative overrides</mark></li>
-      <li class="fragment">Automation in <mark>visual testing</mark></li>
-    </ul>
-  </section>
-  <section>
-    <h3>Cons</h3>
-    <ul>
-      <li class="fragment"><mark>Learning curve</mark> for Custom Properties and Layers</li>
-      <li class="fragment"><mark>Effort</mark> for documentation maintenance</li>
-      <li class="fragment">Effort for implementing testing <mark>processes</mark></li>
-    </ul>
-  </section>
-  <section>
-    <h3>Final Thoughts</h3>
-  </section>
-  <section>
-    <p balance="">An accessible and <mark>well-structured</mark> design system offers numerous benefits in terms of <mark>consistency and scalability</mark></p>
-  </section>
-  <section>
-    <p>However, it requires ongoing effort in management, documentation, and testing to <mark>maintain quality and visual integrity</mark>.</p>
-  </section>
-</section>
-
+<!-- <include src="./slides/outro/_wrap-up.html"></include> -->
 <section data-transition="convex">
 <!-- <section links data-transition="convex">
   <h4>Slides Repo</h4>
