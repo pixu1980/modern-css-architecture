@@ -1,10 +1,10 @@
 @import "npm:@pixu-talks/fonts";
 @import "npm:@pixu-talks/theme";
 
-@import "./_cascade.css" layer(pixu-talk);
-@import "./_browser.css" layer(pixu-talk);
+@import "./_cascade.css" layer(pixu-talks);
+@import "./_browser.css" layer(pixu-talks);
 
-@layer pixu-talk {
+@layer pixu-talks {
 	@layer reveal {
 		.reveal pre {
 			max-width: 100%;
